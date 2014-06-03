@@ -29,7 +29,7 @@
                 height: 3em; font-size: 1em; line-height: 3em; color: rgb(70,140,200);
             }
             .topTitleTry{
-                float: left; height: 3em; font-size: 1.0em; line-height: 3em;
+                float: left; height: 2em; font-size: 1.0em; line-height: 3em;
             } 
             label{
                 font-weight: normal;
@@ -50,12 +50,14 @@
                 <div style="height: 1em;"></div>
 
                 <label class="col-sm-2  topTitleTry"style="margin-right: 0px">{$userName}，</label>
-                <div class="col-sm-10">
-                    <p class="form-control-static topNameTry">订单已生效请选择支付方式</p>
-                    <input type="hidden" name="orderMerchandise" value="{$returnVal.orderMerchandise}">
-                </div>
+               
+              
                 <div style="clear: both;"></div>
             </div>
+            <div class="col-sm-10">
+              <p class="form-control-static topNameTry"  style='font-size:12px;'>订单已生效请选择支付方式</p>
+              <input type="hidden" name="orderMerchandise" value="{$returnVal.orderMerchandise}">
+          </div>
             <div style="border-bottom: 1px dotted #bbb;height: 1px; "></div>
             <div style="height:25px;"></div>
 
