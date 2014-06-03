@@ -1,0 +1,39 @@
+项目架构 解释
+
+
+	1. api  通用接口文件 
+
+	2. Cache  smarty 缓存文件
+
+	3. Config   项目 配置文件
+
+	4. Controllers  通用c层文件
+
+	5.Extends   微信事件处理 通用类 (自定义菜单 事件处理 和  关注 事件处理)
+
+	6.interface  接口文件
+
+		1.inhouse    理发店 接口文件
+
+		2.jiantang   脊安堂 接口文件
+
+		3. main      通用   接口文件   
+
+	7. lib    
+
+		inhouse    理发店 项目
+
+			1. api     理发店 调用的接口目录 
+
+			 	userApi     用户接口文件  继承 通过接口文件
+
+			2. controllers    理发店 控制层文件
+
+				userControllers.class.php   用户控制层文件   继承通用c层文件
+
+
+			3.  extends     微信事件 处理类 继承 Extends 中的通过类
+
+
+			config.php  配置文件   (设置 来源  模版名称 微信事件文件名称)
+
