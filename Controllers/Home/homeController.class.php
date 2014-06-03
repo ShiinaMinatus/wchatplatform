@@ -8,6 +8,9 @@ class mainhomeController extends BaseController implements mainhome {
      public function __construct() {
 
         header("Content-type:text/html;charset=utf-8");
+        if(isset($_REQUEST["open_id"])){
+            $this->assign("open_id",$_REQUEST["open_id"]);
+        }
     }
 
 

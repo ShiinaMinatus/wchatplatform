@@ -57,7 +57,7 @@ class mainreserveController extends BaseController implements mainreserve {
         } else if ((int) $orderTime > $nowTime) {
             $this->displayMessage("你已经有正在进行的订单，请执行<a href='" . WebSiteUrl . "?g=".SOURCE."&a=reserve&v=orderCheck&open_id=" . $this->userOpenId . "'>查看订单</a>操作");
         }
-        $selectReturnVal = transferData(APIURL . "/order/get_merchandise", "get");
+        $selectReturnVal = transferData(APIURL . "/order/get_merchandise", "post",$userOrder);
         
        
         $selectVal = json_decode($selectReturnVal, true);

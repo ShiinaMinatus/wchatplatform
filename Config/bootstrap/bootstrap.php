@@ -106,20 +106,20 @@ class website {
                 /**
                  * 获取权限表
                  */
-                $auth = $_ENV['authArray'][MODULE_DIR];
-
-                if($auth != 1){
-
-                    $list = explode(',', $auth);
-
-                    if(!in_array(ACTION_NAME, $list)){
-
-                        echo '该模块无权限进入该方法';
-
-                        die;
-                    }
-
-                }
+//                $auth = $_ENV['authArray'][MODULE_DIR];
+//
+//                if($auth != 1){
+//
+//                    $list = explode(',', $auth);
+//
+//                    if(!in_array(ACTION_NAME, $list)){
+//
+//                        echo '该模块无权限进入该方法';
+//
+//                        die;
+//                    }
+//
+//                }
 
                 include_once PLUG.'/Wechat.class.php';
 
