@@ -50,13 +50,11 @@ class maincodeApi {
     }
 
 
-    public function getUserReceviceCode($code_type = 1,$open_id){
+    public function getUserReceviceCode($code_type = 1){
 
-         if (!empty($source) && !empty($open_id)) {
+         if (!empty($code_type) ) {
 
             $data['code_type'] = $code_type;
-
-            $data['open_id'] = $open_id;
 
             $data['source'] = SOURCE;          
 
