@@ -22,6 +22,10 @@
                 border-radius:10%;
 
             }
+            .registerWarp{
+                margin: 0 auto;
+                width: 90%;
+            }
             .siteClass{
 
                 color: rgb(128,128,128);
@@ -51,49 +55,87 @@
             .expenseTitle{
                 border-bottom: 1px solid #e7e7e7;height: 40px; line-height: 40px; 
             }
-            .col-a{
-                /*                显示尖角*/
-                position: relative;
-                background: #E7E7E7;
-                top: -40px;
-                height: auto;
-                left: -14px;
-                color: white;
-                font-size: 17px; 
-                width: 5px;
+            .topTitle{
+                background: #27abe4;
+                height: 40px;
+                width: 100%;
+                margin-top: 15px;
+                line-height: 40px;
+                font-weight: bold;
+                font-size: 16px;
+                padding-left:6px;
             }
-            .col-line-first{
-                /*左侧线条上半部分*/
-                width: 2px;
-                margin-right: 10px;
-                height: 38.4px;
-                background-color: gray;
+            .mainText{
+                background-color: white;
+                width: 102%;
+                font-weight: bold;
+                font-size: 16px;
             }
-            .col-line-ball{
-                /*线条中的球*/
-                width: 6px; 
-                margin-right: 10px;
-                height:6px;
-                margin-left: -2px;
-                background-color: gray;
-                border-radius: 50%
+            .picStyle{
+                padding-left: 5px;
+                padding-top: 3px;
+                display: block;
+                float: left;
             }
-            .col-line-seconed{
-                /*左侧线条下半部分*/
-                width: 2px;
-                margin-right: 10px;
-                height: 62.4px;
-                background-color: gray;
+            .divHeight{
+                height: 35px;
+                padding-top: 15px;
             }
-
-
-            
+            .divText{
+                margin-left: 15px;
+                font-size: 16px;
+                display: block;
+                float: left;
+            }
         </style>
     </head>
     <body style="background-color: #E7E7E7;margin: 0 auto; padding: 0; width: 320px; ">
+        <div class="registerWarp">
+            <div>
+                <div class="topTitle">
+                    In-hourse南京路店
+                </div>
+                <div class="mainText">
 
-       <iframe width="188" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://ditu.google.cn/maps?f=q&amp;source=s_q&amp;hl=zh-CN&amp;geocode=&amp;q=%E5%8D%97%E4%BA%AC%E8%A5%BF%E8%B7%AF1486%E5%8F%B7b%E5%BA%A7&amp;aq=&amp;sll=31.227697,121.455858&amp;sspn=0.022349,0.038581&amp;brcurrent=3,0x35b27002cd47a7f1:0x57b3bfb932aaf682,0%3B5,0,0&amp;ie=UTF8&amp;hq=&amp;hnear=%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%8D%97%E4%BA%AC%E8%A5%BF%E8%B7%AF&amp;t=m&amp;z=14&amp;ll=31.227697,121.455858&amp;output=embed"></iframe><br /><small><a href="http://ditu.google.cn/maps?f=q&amp;source=embed&amp;hl=zh-CN&amp;geocode=&amp;q=%E5%8D%97%E4%BA%AC%E8%A5%BF%E8%B7%AF1486%E5%8F%B7b%E5%BA%A7&amp;aq=&amp;sll=31.227697,121.455858&amp;sspn=0.022349,0.038581&amp;brcurrent=3,0x35b27002cd47a7f1:0x57b3bfb932aaf682,0%3B5,0,0&amp;ie=UTF8&amp;hq=&amp;hnear=%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%8D%97%E4%BA%AC%E8%A5%BF%E8%B7%AF&amp;t=m&amp;z=14&amp;ll=31.227697,121.455858" style="color:#0000FF;text-align:left">查看大图</a></small>
-       
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/tag.png" alt=""></span><span class="divText">南京西路1486号B座</span></div>
+                    <div style="clear: both;"></div>
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/phone.png" alt=""></span><span class="divText">4008565585-1</span></div>
+                    <div style="clear: both;"></div>
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/times.png" alt=""></span><span class="divText" style="margin-left: 10px;">11:00am-9:00pm</span></div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+            <div>
+                <div class="topTitle">
+                    In-hourse武宁路店
+                </div>
+                <div class="mainText">
+
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/tag.png" alt=""></span><span class="divText">武宁路99号我格广场B105</span></div>
+                    <div style="clear: both;"></div>
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/phone.png" alt=""></span><span class="divText">4008565585-2</span></div>
+                    <div style="clear: both;"></div>
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/times.png" alt=""></span><span class="divText" style="margin-left: 10px;">10:00am-10:00pm</span></div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+            <div>
+                <div class="topTitle">
+                    In-hourse虹口龙之梦店
+                </div>
+                <div class="mainText">
+
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/tag.png" alt=""></span><span class="divText">西江湾 路388号虹口龙之梦4038</span></div>
+                    <div style="clear: both;"></div>
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/phone.png" alt=""></span><span class="divText">4008565585-3</span></div>
+                    <div style="clear: both;"></div>
+                    <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/times.png" alt=""></span><span class="divText" style="margin-left: 10px;">10:00am-10:00pm</span></div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+
+
     </body>
 
 </html>
