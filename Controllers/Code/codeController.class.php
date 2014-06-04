@@ -104,7 +104,7 @@ class maincodeController extends BaseController implements maincode {
 
         $codeApi = new codeApi();
 
-        $result = $codeApi->getUserReceviceCode( 2, $give_open_id);
+        $result = $codeApi->getUserReceviceCode(2);
         
        
 
@@ -153,10 +153,12 @@ class maincodeController extends BaseController implements maincode {
             $user = new userApi();
 
             $userInfo = $user->getUserInfo($this->userOpenId);
+                
+        
             $code = new codeApi();
 
             $codeResult = $code->giveCode($_REQUEST['code_id'], $this->userOpenId, $_REQUEST['give_open_id']);
-
+            
             $error = new errorApi();
 
             $error->JudgeError($codeResult);
@@ -181,7 +183,7 @@ class maincodeController extends BaseController implements maincode {
 
                 $msg = '恭喜您，已经领取了' . $userGiveInfo['weixin_user']['nickname'] . '赠送的好礼，请关注我们平台<a href="javascript:viewProfile();">脊安堂</a>会有惊喜等着你';
 
-                $this->displayMessage($msg);
+                $this->displayMessage($msg,1);
             }
         }
     }
