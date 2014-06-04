@@ -40,14 +40,14 @@ defined("imageSrc")or define("imageSrc", "weixin_crm/giftImages/");
 //defined('WebImageUrl') or define('WebImageUrl', 'http://' . $_SERVER['HTTP_HOST'] . '/'.imageSrc);
 defined('WebImageUrl') or define('WebImageUrl', 'http://' . $_SERVER['HTTP_HOST'] . '/' . imageSrc);
 
-defined('WebSiteUrlPublic') or define('WebSiteUrlPublic', 'http://' . $_SERVER['HTTP_HOST'] . '/' . WebSiteName . '/public');
+defined('WebSiteUrlPublic') or define('WebSiteUrlPublic', 'http://' . $_SERVER['HTTP_HOST'] . '/' . WebSiteName."/public" );
 
 
 defined('URL_PATHINFO_FETCH') or define('URL_PATHINFO_FETCH', 'ORIG_PATH_INFO,REDIRECT_PATH_INFO,REDIRECT_URL');
 /**
  * 关闭报错信息 把报错信息存储到错误文件中
  */
-ini_set("display_errors",1);
+ini_set("display_errors",0);
 
 
 //defined('APIURL') or define('APIURL', 'http://localhost/yajie_weixin_crm/weixin_api');

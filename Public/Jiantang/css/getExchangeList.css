@@ -1,0 +1,87 @@
+body{
+    Font-size=62.5%;
+}
+.registerWarp{
+    width: 100%;
+}
+.tableSize{
+    width: 100%;
+    text-align: center;
+}
+.inlinDisplay{
+    display: inline-block;
+}
+td{
+    width: 50%;
+}
+.giftListStyle{
+    background-color: #fff;
+
+    border-bottom: 1px solid #e4e4e4;
+}
+.round_photo{
+    width:100%;
+    height: auto;
+    border:1px solid #ddddde;
+    -moz-border-radius: 59px;
+    -webkit-border-radius: 59px;
+    border-radius:50%;
+
+}
+.giftListStyle p{
+    /*                margin: 0 !important;*/
+}
+.siteClass{
+
+    color: rgb(128,128,128);
+} 
+.graph{  
+
+    width: 0;     height: 0;     border-bottom: 38px solid rgb(70,140,200);  
+
+    border-left: 41px solid transparent;
+
+}  
+/*积分样式*/
+.pointStyle{
+    color:orange;float: right;
+}
+
+/*礼品标签栏样式
+    设置背景色与宽度
+*/
+.titleTag{
+    background-color: #fff;
+    width: 100%;
+}
+.titleTag ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+.titleTag ul li{
+    /*                display: inline-block;*/
+    float: left;
+    width: 33%;
+    text-align: center;
+    /*                height: 3em;*/
+    line-height: 2.5em;
+    border-bottom: 3px solid #fff;
+    border-top: 2px solid #fff;
+    /*                margin-left: -5px;*/
+}
+.titleTag ul li a{
+    color: black;
+}
+.titleTag ul li a:hover{
+    text-decoration: none;
+}
+.titleTagActive{
+    border-bottom: none !important;
+}
+.titleBorderRight{
+    border-right: 1px solid #e4e4e4;
+}
+/*礼品标签栏样式*/
+.summary{
+    font-size: 14px;
+}

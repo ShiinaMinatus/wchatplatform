@@ -10,89 +10,7 @@
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
-        <style>
-            body{
-                Font-size=62.5%;
-            }
-            .registerWarp{
-                width: 100%;
-            }
-            .tableSize{
-                width: 100%;
-                text-align: center;
-            }
-            .inlinDisplay{
-                display: inline-block;
-            }
-            td{
-                width: 50%;
-            }
-            .giftListStyle{
-                background-color: #fff;
-
-                border-bottom: 1px solid #e4e4e4;
-            }
-            .round_photo{
-                width:100%;
-                height: auto;
-                border:1px solid #ddddde;
-                -moz-border-radius: 59px;
-                -webkit-border-radius: 59px;
-                border-radius:50%;
-
-            }
-            .giftListStyle p{
-                /*                margin: 0 !important;*/
-            }
-            .siteClass{
-
-                color: rgb(128,128,128);
-            } 
-            .graph{  
-
-                width: 0;     height: 0;     border-bottom: 38px solid rgb(70,140,200);  
-
-                border-left: 41px solid transparent;
-
-            }  
-            .pointStyle{
-                color:orange;float: right;
-            }
-            .titleTag{
-                background-color: #fff;
-                width: 100%;
-            }
-            .titleTag ul{
-                list-style-type: none;
-                padding-left: 0px;
-            }
-            .titleTag ul li{
-                /*                display: inline-block;*/
-                float: left;
-                width: 33%;
-                text-align: center;
-                /*                height: 3em;*/
-                line-height: 2.5em;
-                border-bottom: 3px solid #fff;
-                border-top: 2px solid #fff;
-                /*                margin-left: -5px;*/
-            }
-            .titleTag ul li a{
-                color: black;
-            }
-            .titleTag ul li a:hover{
-                text-decoration: none;
-            }
-            .titleTagActive{
-                border-bottom: none !important;
-            }
-            .titleBorderRight{
-                border-right: 1px solid #e4e4e4;
-            }
-            .summary{
-                font-size: 14px;
-            }
-        </style>
+        <link rel="stylesheet" href="{$WebSiteUrlPublic}/css/getExchangeList.css"/>
     </head>
     <body style='background-color: rgb(243,237,227);'>
 
@@ -121,7 +39,7 @@
                     <div style="float: left">1000积分 |</div>
                 </div>-->
         <input type="hidden" value="{$localUserInfo.user_integration}" id="userPoint">
-
+        <!--头部标签栏开始-->
         <div class="titleTag">
             <ul style="margin-top: -10px;margin-right: -8px;" >
                 {if  $groupBy eq "300point" or $groupBy eq ""}
@@ -140,6 +58,8 @@
             </ul>
             <div style="clear: both;"></div>
         </div>
+        <!--头部标签栏结束-->
+        <!--礼品内容开始-->
         <div style=" border-top:1px solid #e4e4e4;"></div>
         <div class="registerWarp">
 
@@ -175,6 +95,8 @@
                 {/foreach}
             {/if}
         </div>
+        <!--礼品内容结束-->
+        <!--弹出框开始-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" >
@@ -193,28 +115,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+        <!--弹出框结束-->
     </body>
-    <script>
-        $(".summary").each(function(){
-        var len=$(this).html().length;
-        if(len>=20){
-        var nowString= $(this).html().substr(0, 20)
-        $(this).html(nowString+"...");
-    }
-});
-$(".submitButton").click(function(){
-
-var integrationVals=$(this).parent().parent();
-var thisUrl=$(this).attr("href");
-$("#checkButton").attr("href",thisUrl);
-var integration=integrationVals.find(".pointStyle").html();
-//var userIntegration=$("#userIntegration").html();
-var userIntegration=$("#userPoint").val();
-if(parseInt(integration)>parseInt(userIntegration)){
-$("#myModalLabel").html("您的积分余额不足");
-$("#checkButton").hide();
-//return false;
-}
-});
-    </script>
+    <script src="{$WebSiteUrlPublic}/javascript/getExchangeList.js"></script>
 </html>
