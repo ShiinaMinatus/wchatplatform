@@ -24,7 +24,7 @@
             }
             .registerWarp{
                 margin: 0 auto;
-                width: 90%;
+               width: 90% ;
             }
             .siteClass{
 
@@ -103,6 +103,7 @@
                     <div style="clear: both;"></div>
                     <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/times.png" alt=""></span><span class="divText" style="margin-left: 10px;">11:00am-9:00pm</span></div>
                     <div style="clear: both;"></div>
+                    <div><img src="{$WebSiteUrlPublic}/image/map1.jpg" width=295 height="130"></div>
                 </div>
             </div>
             <div>
@@ -117,6 +118,7 @@
                     <div style="clear: both;"></div>
                     <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/times.png" alt=""></span><span class="divText" style="margin-left: 10px;">10:00am-10:00pm</span></div>
                     <div style="clear: both;"></div>
+                    <div><img src="{$WebSiteUrlPublic}/image/map2.jpg" width=295 height="130"></div>
                 </div>
             </div>
             <div>
@@ -131,8 +133,10 @@
                     <div style="clear: both;"></div>
                     <div class="divHeight"><span class="picStyle"><img src="{$WebSiteUrlPublic}/image/times.png" alt=""></span><span class="divText" style="margin-left: 10px;">10:00am-10:00pm</span></div>
                     <div style="clear: both;"></div>
+                    <div><img src="{$WebSiteUrlPublic}/image/map3.jpg" width=295 height="130"></div>
                 </div>
             </div>
+                <div style="height: 15px;"></div>
         </div>
 
 
