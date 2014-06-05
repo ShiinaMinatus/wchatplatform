@@ -63,6 +63,17 @@ class weixinEvent extends mainweixinEvent {
         $array[0] = array('Title' => '门店信息', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=web&v=storeInformation&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/wchatplatform/public/company/image/2011071223051083.jpg");
         $wechat->news($array)->reply();
     }
+    
+     function lianxifangshi() {
+        $wechat = new Wechat();
+
+        $type = $wechat->getRev()->getRevType();
+
+        $userCode = $wechat->getRev()->getRevFrom(); //获取微信号码 查询数据库 查看是否已经绑定帐号
+
+        $text = '预约电话：4008565585';
+        $wechat->text($text)->reply();
+    }
 
 }
 

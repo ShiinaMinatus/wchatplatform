@@ -91,8 +91,12 @@ class BaseController {
 
       
         $this->smarty->assign('websiteUrl', WebSiteUrl);
+        
+        $this->smarty->assign('WebUploadUrl',WebUploadUrl);
 
         $this->smarty->assign('model', MODULE_DIR_NAME);
+        
+         $this->smarty->assign('source', strtolower(MODULE_DIR_NAME));
 
 
 
