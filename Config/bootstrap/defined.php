@@ -40,6 +40,9 @@ defined("imageSrc")or define("imageSrc", "weixin_crm/giftImages/");
 //defined('WebImageUrl') or define('WebImageUrl', 'http://' . $_SERVER['HTTP_HOST'] . '/'.imageSrc);
 defined('WebImageUrl') or define('WebImageUrl', 'http://' . $_SERVER['HTTP_HOST'] . '/' . imageSrc);
 
+
+defined('WebUploadUrl') or define('WebUploadUrl', 'http://' . $_SERVER['HTTP_HOST'] . '/weixin_crm/images/');
+
 defined('WebSiteUrlPublic') or define('WebSiteUrlPublic', 'http://' . $_SERVER['HTTP_HOST'] . '/' . WebSiteName . '/public');
 
 
@@ -52,7 +55,7 @@ ini_set("display_errors",1);
 
 //defined('APIURL') or define('APIURL', 'http://localhost/yajie_weixin_crm/weixin_api');
 
-defined('APIURL') or define('APIURL', 'http://112.124.25.155/weixin_api');
+defined('APIURL') or define('APIURL', 'http://localhost/weixin_api');
 
 defined('VAR_MODULE') or define('VAR_MODULE', 'a');
 

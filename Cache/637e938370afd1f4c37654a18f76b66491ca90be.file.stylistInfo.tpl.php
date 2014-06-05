@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty-3.0-RC2, created on 2014-06-04 16:33:27
+<?php /* Smarty version Smarty-3.0-RC2, created on 2014-06-05 09:58:58
          compiled from "/web/www/wchatplatform/Lib//Inhouse/Tpl/Web/stylistInfo.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1796046154538ed9d78f9c60-43021824%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1088321085538fcee2378c03-33763003%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '637e938370afd1f4c37654a18f76b66491ca90be' => 
     array (
       0 => '/web/www/wchatplatform/Lib//Inhouse/Tpl/Web/stylistInfo.tpl',
-      1 => 1401870806,
+      1 => 1401933537,
     ),
   ),
-  'nocache_hash' => '1796046154538ed9d78f9c60-43021824',
+  'nocache_hash' => '1088321085538fcee2378c03-33763003',
   'function' => 
   array (
   ),
@@ -117,6 +117,7 @@ $_smarty_tpl->decodeProperties(array (
                 float: left;
                 font-size: 14px;
 
+                z-index: 999;
 
             }
             .triangle-character {
@@ -141,25 +142,40 @@ $_smarty_tpl->decodeProperties(array (
         </style>
     </head>
     <body style="background-color: #E7E7E7;margin: 0 auto; padding: 0; width: 320px; ">
-
-        <div>
+        
+        <?php  $_smarty_tpl->tpl_vars['lists'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('list')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['lists']->key => $_smarty_tpl->tpl_vars['lists']->value){
+?>
+            
+            <div style='position: relative;'>
             <div style=' height: 10px;'>&nbsp;</div>
-            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>&nbsp;</div>
+            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>
+                
+                <img src="<?php echo $_smarty_tpl->getVariable('WebUploadUrl')->value;?>
+<?php echo $_smarty_tpl->getVariable('source')->value;?>
+/<?php echo $_smarty_tpl->tpl_vars['lists']->value['stylist_image'];?>
+" style='width: 141px; height: 161px;'>
+            </div>
             <div class="message-box" style='float: left;'>
-                <div style=' width: 93%; margin:0 auto; padding-top: 4px;'>
+                <div style=' width: 93%; margin:0 auto; padding-top: 10px;position: relative; z-index: 999;'>
 
-                    <div>欧文rex</div>
+                    <div style='color:#2996cc'><?php echo $_smarty_tpl->tpl_vars['lists']->value['stylist_name'];?>
+</div>
 
                     <div style='height:10px;'>&nbsp;</div>
                     <div style='width:100%; height: 60px;'>
-                        <span style='display:inline-block; word-break:break-all;'>个人介绍:&nbsp;&nbsp;<span>以简约日韩海派风发型为主,为你打造自然时尚大方的新形象</span></span>
+                        <span style='display:inline-block; word-break:break-all; font-size: 14px; color: #4b4b4b'>个人介绍:&nbsp;&nbsp;<span><?php echo $_smarty_tpl->tpl_vars['lists']->value['stylist_info'];?>
+</span></span>
 
 
                     </div>
 
                     <div style='height:10px;'>&nbsp;</div>
                     <div>
-                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span>日韩风格,电棒造型，色彩搭配</span></span>
+                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span><?php echo $_smarty_tpl->tpl_vars['lists']->value['specialty'];?>
+</span></span>
                     </div>
 
                 </div>
@@ -169,69 +185,10 @@ $_smarty_tpl->decodeProperties(array (
             <div style='clear: both'>&nbsp;</div>
 
         </div>
+            
+         <?php }} ?>
         
-        
-        
-        
-        
-          <div>
-            <div style=' height: 10px;'>&nbsp;</div>
-            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>&nbsp;</div>
-            <div class="message-box" style='float: left;'>
-                <div style=' width: 93%; margin:0 auto; padding-top: 4px;'>
-
-                    <div>欧文rex</div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div style='width:100%; height: 60px;'>
-                        <span style='display:inline-block; word-break:break-all;'>个人介绍:&nbsp;&nbsp;<span>以简约日韩海派风发型为主,为你打造自然时尚大方的新形象</span></span>
-
-
-                    </div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div>
-                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span>日韩风格,电棒造型，色彩搭配</span></span>
-                    </div>
-
-                </div>
-                <div class="triangle-character tc-border">◆</div>
-                <div class="triangle-character tc-background">◆</div>
-            </div>
-            <div style='clear: both'>&nbsp;</div>
-
-        </div>
-          <div>
-            <div style=' height: 10px;'>&nbsp;</div>
-            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>&nbsp;</div>
-            <div class="message-box" style='float: left;'>
-                <div style=' width: 93%; margin:0 auto; padding-top: 4px;'>
-
-                    <div>欧文rex</div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div style='width:100%; height: 60px;'>
-                        <span style='display:inline-block; word-break:break-all;'>个人介绍:&nbsp;&nbsp;<span>以简约日韩海派风发型为主,为你打造自然时尚大方的新形象</span></span>
-
-
-                    </div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div>
-                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span>日韩风格,电棒造型，色彩搭配</span></span>
-                    </div>
-
-                </div>
-                <div class="triangle-character tc-border">◆</div>
-                <div class="triangle-character tc-background">◆</div>
-            </div>
-            <div style='clear: both'>&nbsp;</div>
-
-        </div>
-
-
-
-
+ 
 
     </body>
 

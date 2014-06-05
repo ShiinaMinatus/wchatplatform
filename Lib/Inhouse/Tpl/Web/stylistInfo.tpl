@@ -99,6 +99,7 @@
                 float: left;
                 font-size: 14px;
 
+                z-index: 999;
 
             }
             .triangle-character {
@@ -123,25 +124,30 @@
         </style>
     </head>
     <body style="background-color: #E7E7E7;margin: 0 auto; padding: 0; width: 320px; ">
-
-        <div>
+        
+        {foreach from=$list item=lists}
+            
+            <div style='position: relative;'>
             <div style=' height: 10px;'>&nbsp;</div>
-            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>&nbsp;</div>
+            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>
+                
+                <img src="{$WebUploadUrl}{$source}/{$lists.stylist_image}" style='width: 141px; height: 161px;'>
+            </div>
             <div class="message-box" style='float: left;'>
-                <div style=' width: 93%; margin:0 auto; padding-top: 4px;'>
+                <div style=' width: 93%; margin:0 auto; padding-top: 10px;position: relative; z-index: 999;'>
 
-                    <div>欧文rex</div>
+                    <div style='color:#2996cc'>{$lists.stylist_name}</div>
 
                     <div style='height:10px;'>&nbsp;</div>
                     <div style='width:100%; height: 60px;'>
-                        <span style='display:inline-block; word-break:break-all;'>个人介绍:&nbsp;&nbsp;<span>以简约日韩海派风发型为主,为你打造自然时尚大方的新形象</span></span>
+                        <span style='display:inline-block; word-break:break-all; font-size: 14px; color: #4b4b4b'>个人介绍:&nbsp;&nbsp;<span>{$lists.stylist_info}</span></span>
 
 
                     </div>
 
                     <div style='height:10px;'>&nbsp;</div>
                     <div>
-                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span>日韩风格,电棒造型，色彩搭配</span></span>
+                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span>{$lists.specialty}</span></span>
                     </div>
 
                 </div>
@@ -151,69 +157,10 @@
             <div style='clear: both'>&nbsp;</div>
 
         </div>
+            
+         {/foreach}
         
-        
-        
-        
-        
-          <div>
-            <div style=' height: 10px;'>&nbsp;</div>
-            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>&nbsp;</div>
-            <div class="message-box" style='float: left;'>
-                <div style=' width: 93%; margin:0 auto; padding-top: 4px;'>
-
-                    <div>欧文rex</div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div style='width:100%; height: 60px;'>
-                        <span style='display:inline-block; word-break:break-all;'>个人介绍:&nbsp;&nbsp;<span>以简约日韩海派风发型为主,为你打造自然时尚大方的新形象</span></span>
-
-
-                    </div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div>
-                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span>日韩风格,电棒造型，色彩搭配</span></span>
-                    </div>
-
-                </div>
-                <div class="triangle-character tc-border">◆</div>
-                <div class="triangle-character tc-background">◆</div>
-            </div>
-            <div style='clear: both'>&nbsp;</div>
-
-        </div>
-          <div>
-            <div style=' height: 10px;'>&nbsp;</div>
-            <div style='background-color: gray; float: left; width: 141px; height: 161px;'>&nbsp;</div>
-            <div class="message-box" style='float: left;'>
-                <div style=' width: 93%; margin:0 auto; padding-top: 4px;'>
-
-                    <div>欧文rex</div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div style='width:100%; height: 60px;'>
-                        <span style='display:inline-block; word-break:break-all;'>个人介绍:&nbsp;&nbsp;<span>以简约日韩海派风发型为主,为你打造自然时尚大方的新形象</span></span>
-
-
-                    </div>
-
-                    <div style='height:10px;'>&nbsp;</div>
-                    <div>
-                        <span style='display:inline-block; word-break:break-all;'>个人特长:&nbsp;&nbsp;<span>日韩风格,电棒造型，色彩搭配</span></span>
-                    </div>
-
-                </div>
-                <div class="triangle-character tc-border">◆</div>
-                <div class="triangle-character tc-background">◆</div>
-            </div>
-            <div style='clear: both'>&nbsp;</div>
-
-        </div>
-
-
-
-
+ 
 
     </body>
 

@@ -420,5 +420,46 @@ function phoneStart($phone){
 
     return $new_phone;
 }
+/**
+ * 初始化  调用文件
+ */
+function P($name,$ext='Api',$subit='.class.php') {
 
+    static $_action = array();
+
+
+    $classname = $name . $ext.$subit;
+    
+
+
+    $classfile = LIB . MODULE_DIR_NAME . '/Api/' . $classname;
+
+    $mainClassName = 'main' . $name . 'Api';
+
+
+
+    if (isset($_action[$name])) {
+
+        return $_action[$name];
+    }
+    
+    
+    if (file_exists($classfile)) {
+
+        require_once $classfile;
+        
+        
+        $name = $name . $ext;
+        
+      
+        $class = new $name ();
+    } else {
+
+        $class = new $mainClassName();
+    }
+
+    $_action[$name] = $class;
+
+    return $class;
+}
 ?>

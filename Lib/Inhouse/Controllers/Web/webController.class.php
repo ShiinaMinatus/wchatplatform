@@ -18,23 +18,21 @@ class webController extends BaseController {
      * 发型师介绍
      */
     public function stylistInfo() {
-
-        //$this->able_register();
-
+  
+        $list = P('stylist')->get_list();
+       
+        $this->assign('list',$list);
+        
         $this->display();
     }
 
     public function pricedList() {
-
-        $this->able_register();
 
         $this->display();
     }
 
     public function storeInformation() {
         
-        //$this->able_register();
-
         $this->display();
     }
 
