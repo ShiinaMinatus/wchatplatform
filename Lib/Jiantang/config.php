@@ -20,7 +20,5 @@ define('TOKEN', 'jiantang.php');
 /**
  * 加载权限表
  */
-
 include_once 'auth.php';
-
 ?>

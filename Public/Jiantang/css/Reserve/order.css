@@ -1,0 +1,63 @@
+body{
+    Font-size=62.5%;
+    background-color: rgb(243,237,227);
+    padding:0 10px;
+}
+.registerWarp{
+    margin: 0 auto;
+    margin-top: 2em;
+
+
+}
+
+.form-control{
+    width: 90%;
+    margin-top: -1.8em;
+    margin-left: 4em;
+}
+.form-group{
+    width: 90%;
+    float: right;
+    height: 3em;
+    white-space:nowrap;
+}
+.col-sm-2{
+    width: 5%;
+    text-align: right;
+}
+.selectWidth{
+    width:40%;
+}
+.lineDis{
+    width:65%;
+    font-size: 13px;
+}
+.floatIconText{
+    float: right;
+    margin-top: -24px;
+}
+.floatIconTextDown{
+    float: bottom;
+}
+.boxround{
+    width: 100%;
+    border-radius: 5px;
+    margin-left: 1em;
+}
+.boxround[readonly]{
+    cursor: not-allowed;
+    background-color: #EEE;
+}
+.no-list-type{
+    list-style-type:none;
+    padding-left: 0px;
+
+}
+.no-list-type >li{
+    height: 3em;
+    line-height: 3em;
+    border-bottom: 1px solid #eee;
+}
+.listSelect{
+    background-color: #2FABD1;
+}

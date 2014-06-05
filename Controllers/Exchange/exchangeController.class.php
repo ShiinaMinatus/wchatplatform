@@ -81,7 +81,7 @@ class mainexchangeController extends BaseController implements mainexchange {
             $postDate["source"] = SOURCE;
             $postDate['open_id'] = $this->userOpenId;
             $goodsId = $_GET['goodsId'];
-            $exchangeItem = transferData(APIURL . "/exchange/get_exchange_info?exchange_id=" . $goodsId, "get");
+            $exchangeItem = transferData(APIURL . "/exchange/get_exchange_info", "post", $postDate);
             $exchangeItem = json_decode($exchangeItem, true);
 
             $error = new errorApi();
@@ -166,6 +166,7 @@ class mainexchangeController extends BaseController implements mainexchange {
             $areaId = $areaId;
         }
         $postDate['area_id'] = $areaId;
+        $postData['source'] = SOURCE;
         $getArea = transferData(APIURL . "/area/get_area", "post", $postDate);
         if ($requestFlag) {
             return $getArea;
@@ -271,7 +272,6 @@ class mainexchangeController extends BaseController implements mainexchange {
         }
     }
 
-    
 }
 
 ?>

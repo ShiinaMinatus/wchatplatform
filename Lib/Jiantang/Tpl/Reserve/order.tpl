@@ -10,81 +10,14 @@
         <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
+        <link rel="stylesheet" href="{$WebSiteUrlPublic}/css/Reserve/order.css">
 
         {if $checkReturn eq 1}
             <title>修改预约</title>
         {else}
             <title>预约</title>
         {/if}
-        <style>
-            body{
-                Font-size=62.5%;
-                background-color: rgb(243,237,227);
-                padding:0 10px;
-            }
-            .registerWarp{
-                margin: 0 auto;
-                margin-top: 2em;
-
-
-            }
-
-            .form-control{
-                width: 90%;
-                margin-top: -1.8em;
-                margin-left: 4em;
-            }
-            .form-group{
-                width: 90%;
-                float: right;
-                height: 3em;
-                white-space:nowrap;
-            }
-            .col-sm-2{
-                width: 5%;
-                text-align: right;
-            }
-            .selectWidth{
-                width:40%;
-            }
-            .lineDis{
-                width:65%;
-                font-size: 13px;
-            }
-            .floatIconText{
-                float: right;
-                margin-top: -24px;
-            }
-            .floatIconTextDown{
-                float: bottom;
-            }
-            .boxround{
-                width: 100%;
-                border-radius: 5px;
-                margin-left: 1em;
-            }
-            .boxround[readonly]{
-                cursor: not-allowed;
-                background-color: #EEE;
-            }
-            .no-list-type{
-                list-style-type:none;
-                padding-left: 0px;
-
-            }
-            .no-list-type >li{
-                height: 3em;
-                line-height: 3em;
-                border-bottom: 1px solid #eee;
-            }
-            .listSelect{
-                background-color: #2FABD1;
-            }
-        </style>
-        <script>
-
-        </script>                   
+              
     </head>
     <body>     
 
@@ -208,89 +141,5 @@
     <script src="{$WebSiteUrlPublic}/javascript/ctrlSelect.js"></script>
     <script src="{$WebSiteUrlPublic}/javascript/bootstrap-datetimepicker.js"></script>
     <script src="{$WebSiteUrlPublic}/javascript/bootstrap-datetimepicker.zh-CN.js"  charset="UTF-8"></script>
-    <script type="text/javascript">
-        $("html").click(function(){
-        $("#orderDate").datetimepicker('hide');
-
-    });
-    $("body").click(function(){
-    $("#orderDate").datetimepicker('hide');
-
-});
-var pc=$("#porpleCount").val();
-var svc=$("#selectValueCache").val();
-$("#orderMerchandise").val(svc);
-$("#porpleCountSubmit").val(pc);
-var nowDayTime=new Date();
-nowDayTime.setHours(0);
-nowDayTime.setMinutes(0);
-nowDayTime.setSeconds(0);
-var endDate= getDateTimeMessage(nowDayTime,2);
-$(".timesAlert").click(function(){
-$("#orderDate").datetimepicker('show');
-return false;
-});
-$("#submitOrder").click(function(){
-    
-if($("#orderDate").val()==""||$("#orderTimeInput").val()==""){
-alert("请填写完整的预约时间（可能时间或日期未填写）");
-return false;
-}else{
-$(this).submit();
-}   
-});
-
-$("#orderMerchandiseHtml").val($("#orderMerchandise").find("option:first").html());
-//alert($("#orderDate").val());
-$("#orderMerchandise").change(function(){
-$("#orderMerchandiseHtml").val($(this).find("option:selected").html());
-});
-$("#orderDate").datetimepicker({
-format: "yyyy-mm-dd ",
-startDate:new Date(),
-minuteStep:15,
-autoclose:true,
-minView:0,
-forceParse:false,
-language:"zh-CN",
-beginHour:"9",
-endHour:"22"
-});
-//$("#orderTime").datetimepicker({
-//format: "hh:ii",
-//minuteStep:15,
-//startDate:new Date(),
-//autoclose:true,
-//startView:1,
-//maxView:1,
-//minView:0,
-//language:"zh-CN"
-//});
-
-$("#orderDate").datetimepicker().on('changeDate',function(ev){
-var changeTime=(ev.date.valueOf());
-
-changeTime=changeTime-(28800*1000);
-
-var changeDateTime=new Date(changeTime);
-var endHours=changeDateTime.getHours();
-var endMin=changeDateTime.getMinutes();
-if(endHours<=9){
-endHours="0"+endHours;
-}
-if(endMin<=9){
-endMin="0"+endMin;
-}
-var nowTime=endHours+":"+endMin;
-$("#orderTimeInput").val(nowTime);
-
-var weekNumber=changeDateTime.getDay();
-var weekDays=["周日","周一","周二","周三","周四","周五","周六"];
-var dayData=$("#orderDate").val();
-$("#orderDateWithNoWeek").val(dayData);
-$("#orderDate").val(dayData+""+weekDays[weekNumber]);
-//alert($("#orderDate").val())
-});
-
-    </script> 
+    <script src="{$WebSiteUrlPublic}/javascript/Reserve/order.js"> </script> 
 </html>
