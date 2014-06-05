@@ -127,8 +127,10 @@
         
         {foreach from=$list item=lists}
             
-            <div style='position: relative;'>
-            <div style=' height: 10px;'>&nbsp;</div>
+          
+               
+           <div style='position: relative; border: 1px solid #dddddd;clear: both; padding-top: 13px; '>
+         
             <div style='background-color: gray; float: left; width: 141px; height: 161px;'>
                 
                 <img src="{$WebUploadUrl}{$source}/{$lists.stylist_image}" style='width: 141px; height: 161px;'>
@@ -136,7 +138,7 @@
             <div class="message-box" style='float: left;'>
                 <div style=' width: 93%; margin:0 auto; padding-top: 10px;position: relative; z-index: 999;'>
 
-                    <div style='color:#2996cc'>{$lists.stylist_name}</div>
+                    <div style='color:#2996cc; font-size: 14px; font-weight: bold;'>{$lists.stylist_name}</div>
 
                     <div style='height:10px;'>&nbsp;</div>
                     <div style='width:100%; height: 60px;'>
@@ -154,9 +156,10 @@
                 <div class="triangle-character tc-border">◆</div>
                 <div class="triangle-character tc-background">◆</div>
             </div>
-            <div style='clear: both'>&nbsp;</div>
+           
 
         </div>
+                   
             
          {/foreach}
         

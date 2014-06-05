@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty-3.0-RC2, created on 2014-06-05 09:58:58
+<?php /* Smarty version Smarty-3.0-RC2, created on 2014-06-05 11:01:17
          compiled from "/web/www/wchatplatform/Lib//Inhouse/Tpl/Web/stylistInfo.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1088321085538fcee2378c03-33763003%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1166640669538fdd7dd81bb1-51999601%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '637e938370afd1f4c37654a18f76b66491ca90be' => 
     array (
       0 => '/web/www/wchatplatform/Lib//Inhouse/Tpl/Web/stylistInfo.tpl',
-      1 => 1401933537,
+      1 => 1401937260,
     ),
   ),
-  'nocache_hash' => '1088321085538fcee2378c03-33763003',
+  'nocache_hash' => '1166640669538fdd7dd81bb1-51999601',
   'function' => 
   array (
   ),
@@ -149,8 +149,10 @@ if (count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['lists']->key => $_smarty_tpl->tpl_vars['lists']->value){
 ?>
             
-            <div style='position: relative;'>
-            <div style=' height: 10px;'>&nbsp;</div>
+          
+               
+           <div style='position: relative; border: 1px solid #dddddd;clear: both; margin-top: 13px; '>
+         
             <div style='background-color: gray; float: left; width: 141px; height: 161px;'>
                 
                 <img src="<?php echo $_smarty_tpl->getVariable('WebUploadUrl')->value;?>
@@ -161,7 +163,7 @@ if (count($_from) > 0){
             <div class="message-box" style='float: left;'>
                 <div style=' width: 93%; margin:0 auto; padding-top: 10px;position: relative; z-index: 999;'>
 
-                    <div style='color:#2996cc'><?php echo $_smarty_tpl->tpl_vars['lists']->value['stylist_name'];?>
+                    <div style='color:#2996cc; font-size: 14px; font-weight: bold;'><?php echo $_smarty_tpl->tpl_vars['lists']->value['stylist_name'];?>
 </div>
 
                     <div style='height:10px;'>&nbsp;</div>
@@ -182,9 +184,10 @@ if (count($_from) > 0){
                 <div class="triangle-character tc-border">◆</div>
                 <div class="triangle-character tc-background">◆</div>
             </div>
-            <div style='clear: both'>&nbsp;</div>
+           
 
         </div>
+                   
             
          <?php }} ?>
         
