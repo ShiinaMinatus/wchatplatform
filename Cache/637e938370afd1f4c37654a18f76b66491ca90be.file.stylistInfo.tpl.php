@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty-3.0-RC2, created on 2014-06-05 11:01:17
+<?php /* Smarty version Smarty-3.0-RC2, created on 2014-06-05 13:05:54
          compiled from "/web/www/wchatplatform/Lib//Inhouse/Tpl/Web/stylistInfo.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1166640669538fdd7dd81bb1-51999601%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1186964649538ffab251a316-64517405%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '637e938370afd1f4c37654a18f76b66491ca90be' => 
     array (
       0 => '/web/www/wchatplatform/Lib//Inhouse/Tpl/Web/stylistInfo.tpl',
-      1 => 1401937260,
+      1 => 1401944753,
     ),
   ),
-  'nocache_hash' => '1166640669538fdd7dd81bb1-51999601',
+  'nocache_hash' => '1186964649538ffab251a316-64517405',
   'function' => 
   array (
   ),
@@ -150,8 +150,8 @@ if (count($_from) > 0){
 ?>
             
           
-               
-           <div style='position: relative; border: 1px solid #dddddd;clear: both; margin-top: 13px; '>
+           <div style='height: 13px;clear: both; '>&nbsp;</div>
+           <div style='position: relative; border: 1px solid #dddddd;clear: both;  '>
          
             <div style='background-color: gray; float: left; width: 141px; height: 161px;'>
                 
@@ -187,6 +187,8 @@ if (count($_from) > 0){
            
 
         </div>
+                    
+         
                    
             
          <?php }} ?>

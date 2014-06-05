@@ -128,8 +128,8 @@
         {foreach from=$list item=lists}
             
           
-               
-           <div style='position: relative; border: 1px solid #dddddd;clear: both; padding-top: 13px; '>
+           <div style='height: 13px;clear: both; '>&nbsp;</div>
+           <div style='position: relative; border: 1px solid #dddddd;clear: both;  height: 160px; '>
          
             <div style='background-color: gray; float: left; width: 141px; height: 161px;'>
                 
@@ -159,6 +159,8 @@
            
 
         </div>
+                    
+         
                    
             
          {/foreach}

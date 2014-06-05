@@ -87,9 +87,7 @@ class maincodeController extends BaseController implements maincode {
     public function giveCodeDetail() {
 
 
-        $user = new userApi();
-
-        $userInfo = $user->getUserInfo($this->userOpenId);
+        $userInfo = P('user')->getUserInfo($this->userOpenId,1);
 
         $var = 'source='.SOURCE.'&action=/code/getCode&give_open_id=' . $_REQUEST['give_open_id'] . '&open_id=' . $this->userOpenId;
 
@@ -102,15 +100,7 @@ class maincodeController extends BaseController implements maincode {
 
     public function getCode($open_id, $give_open_id) {
 
-        $codeApi = new codeApi();
-
-        $result = $codeApi->getUserReceviceCode(2);
-        
-       
-
-        //$codeInfo = $codeApi->getcodeInfo($result['promo_code_id'], 'company');
-        
-      
+        $result = P('code')->getUserReceviceCode(2);
 
         if ($give_open_id == $open_id) {
 
@@ -149,37 +139,15 @@ class maincodeController extends BaseController implements maincode {
         }
 
         if (!empty($_REQUEST['code_id']) && !empty($this->userOpenId) && !empty($_REQUEST['give_open_id'])) {
+         
+            $userInfo = P('user')->getUserInfo($this->userOpenId);
 
-            $user = new userApi();
-
-            $userInfo = $user->getUserInfo($this->userOpenId);
-                
-        
-            $code = new codeApi();
-
-            $codeResult = $code->giveCode($_REQUEST['code_id'], $this->userOpenId, $_REQUEST['give_open_id']);
-            
-            $error = new errorApi();
-
-            $error->JudgeError($codeResult);
-
+            $codeResult = P('code')->giveCode($_REQUEST['code_id'], $this->userOpenId, $_REQUEST['give_open_id']);
+          
 
             if (!empty($codeResult) && $codeResult['res'] == 1) {
 
-
-
-                $userGiveInfo = $user->getUserInfo($_REQUEST['give_open_id']);
-
-//                if ($userInfo['weixin_user']['subscribe'] == 0) {
-//
-//
-//                    $msg = '领取成功,请关注脊安堂 服务号 ';
-//
-//                    $this->displayMessage($msg);
-//                } else {
-//
-//                    U('company/user/userCenter', array('open_id' => $this->userOpenId));
-//                }
+                $userGiveInfo = P('user')->getUserInfo($_REQUEST['give_open_id']);
 
                 $msg = '恭喜您，已经领取了' . $userGiveInfo['weixin_user']['nickname'] . '赠送的好礼，请关注我们平台<a href="javascript:viewProfile();">脊安堂</a>会有惊喜等着你';
 
@@ -190,25 +158,19 @@ class maincodeController extends BaseController implements maincode {
 
     public function promoMessage() {
         $nowTime = mktime(0, 0, 0);
-        $postDate["source"] = SOURCE;
-        $postDate['open_id'] = $this->userOpenId;
+       
 
         $groupBy = isset($_GET["groupBy"]) ? $_GET["groupBy"] : "";
-        $userCode = transferData(APIURL . "/code/get_user_code", "post", $postDate);
-        $userCode = json_decode($userCode, true);
 
+        $userCode = P('code')->get_user_code($this->userOpenId);
 
-
-        $error = new errorApi();
-
-        $error->JudgeError($userCode);
+      
         if (isset($userCode["error"])) {
             $this->assign("codeInfo", "error");
         } else if ($userCode == "") {
             $this->assign("codeInfo", "error");
         } else {
             $codeInfo = array();
-
 
             $codeRecord = array();
             if (!isset($groupBy) || $groupBy == "") {

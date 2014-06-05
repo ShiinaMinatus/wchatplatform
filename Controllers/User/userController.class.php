@@ -13,9 +13,6 @@ class mainuserController extends BaseController implements mainuser {
             $this->userOpenId = $_REQUEST['open_id'];
         } else {
             $this->userOpenId = 'oIUY-tzD2rRdkycAc5ceQjtI1-ok';
-
-
-            //$this->userOpenId = 'dasdasd';
         }
 
 
@@ -50,15 +47,7 @@ class mainuserController extends BaseController implements mainuser {
 
     public function register() {
 
-        $userApi = new userApi();
-
-        $userInfo = $userApi->ableUser($this->userOpenId);
-
-        $error = new errorApi();
-
-        $error->JudgeError($userInfo);
-
-
+        $userInfo = P('user')->ableUser($this->userOpenId);
 
         $this->assign('open_id', $this->userOpenId);
 
@@ -76,45 +65,55 @@ class mainuserController extends BaseController implements mainuser {
      */
     public function submitRegister() {
 
-
-
         if (!empty($_REQUEST['open_id'])) {
+
             if (!empty($_REQUEST['phoneNumber'])) {
+
                 if (checkMobile($_REQUEST['phoneNumber'])) {
+
                     if (!empty($_REQUEST['userName'])) {
+
                         $data = array();
+
                         $data['open_id'] = $_REQUEST['open_id'];
+
                         $data['source'] = SOURCE;
+
                         $data['user_name'] = $_REQUEST['userName'];
+
                         $data['sex'] = $_REQUEST['gender'];
+
                         $data['user_phone'] = $_REQUEST['phoneNumber'];
+
                         $data['birthday'] = strtotime($_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['date']);
-                        $resultRenameJson = transferData(APIURL . '/user/able_user/', 'post', $data);
-                        $resultRenameArray = json_decode($resultRenameJson, true);
-
-                        $error = new errorApi();
-
-                        $error->JudgeError($resultRenameArray);
+                       
+                        P('user')->ableUser($_REQUEST['open_id']);
 
                         if ($resultRenameArray['success'] == 1) {
 
 
-                            $resultRegisterJson = transferData(APIURL . '/user/add', 'post', $data);
+                            // $resultRegisterJson = transferData(APIURL . '/user/add', 'post', $data);
 
-                            $resultRegisterArray = json_decode($resultRegisterJson, true);
+                            // $resultRegisterArray = json_decode($resultRegisterJson, true);
 
-                            $error = new errorApi();
+                            // $error = new errorApi();
 
-                            $error->JudgeError($resultRegisterArray);
+                            // $error->JudgeError($resultRegisterArray);
+
+                            $resultRegisterArray = P('user')->addUser($data);
 
                             if ($resultRegisterArray['user']['user_id'] > 0) {
 
-                                if (!empty($_REQUEST['vars'])) {
+                                /**
+                                 * 判断是否有通过其他途径 跳转进来  如有 则注册完成跳转
+                                 */
 
+                                if (!empty($_REQUEST['vars'])) {
 
                                     $varsArray = json_decode(stripcslashes($_REQUEST['vars']), true);
 
                                     if (!empty($varsArray['action'])) {
+
                                         if ($varsArray['action'] == '/code/getCode') {
 
                                             $array = array('open_id' => $varsArray['open_id'], 'give_open_id' => $varsArray['give_open_id']);
@@ -174,16 +173,19 @@ class mainuserController extends BaseController implements mainuser {
 
         $this->able_register();
 
-        $userApi = new userApi();
+        $userInfo = P('user')->getUserInfo($this->userOpenId);
 
-        $userInfo = $userApi->getUserInfo($this->userOpenId);
-        $postDate["source"] = SOURCE;
-        $postDate['open_id'] = $this->userOpenId;
-        $messagePrompt = transferData(APIURL . "/user/get_info_status", "post", $postDate);
-        $messagePrompt = json_decode($messagePrompt, TRUE);
-        $error = new errorApi();
-        $error->JudgeError($messagePrompt);
+        // $postDate["source"] = SOURCE;
+        // $postDate['open_id'] = $this->userOpenId;
+        // $messagePrompt = transferData(APIURL . "/user/get_info_status", "post", $postDate);
+        // $messagePrompt = json_decode($messagePrompt, TRUE);
+        // $error = new errorApi();
+        // $error->JudgeError($messagePrompt);
+
+        $messagePrompt = P('user')->getUserStatus($this->userOpenId);
+
         $this->assign('messagePrompt', $messagePrompt);
+
         if (!empty($userInfo)) {
 
             $this->assign('userinfo', $userInfo);
@@ -193,16 +195,16 @@ class mainuserController extends BaseController implements mainuser {
 
     public function userInfo() {
 
-        $postDate["source"] = SOURCE;
-        $postDate['open_id'] = $this->userOpenId;
-        $userInfo = transferData(APIURL . "/user/get_info", "post", $postDate);
-        $userInfo = json_decode($userInfo, TRUE);
-        $error = new errorApi();
-        $error->JudgeError($userInfo);
+        $userInfo = P('user')->getUserInfo($this->userOpenId);
+       
         $this->assign('userinfo', $userInfo["weixin_user"]);
+
         $birthdayToDate = $userInfo["user"]["birthday"];
+
         $birthdayToDate = date("Y-m-d", $birthdayToDate);
+
         $this->assign("userBirthday", $birthdayToDate);
+
         $this->display();
     }
 
@@ -211,23 +213,19 @@ class mainuserController extends BaseController implements mainuser {
      */
     public function userJf() {
 
-
-
         if (!empty($_REQUEST['type'])) {
 
-
             $type = $_REQUEST['type'];
+
         } else {
 
             $type = 1;
         }
 
-        $userApi = new userApi();
-
-        $result = $userApi->getUserRecord($this->userOpenId, $type);
-
+        $result = P('user')->getUserRecord($this->userOpenId, $type);
 
         $this->assign('type', $type);
+
         $this->assign('data', $result);
 
         $this->assign('number', count($result));
@@ -251,7 +249,7 @@ class mainuserController extends BaseController implements mainuser {
      */
     public function ativating() {
 
-         $userApi = new userApi();
+        $userApi = new userApi();
 
         $userInfo = $userApi->ableUser($this->userOpenId);
 
@@ -265,7 +263,7 @@ class mainuserController extends BaseController implements mainuser {
 
         $this->able_register();
 
-        $array = $this->userRegistration();
+        $array = P('user')->userRegistration($this->userOpenId);
 
         $today_time = mktime(0, 0, 0);
 
@@ -292,35 +290,15 @@ class mainuserController extends BaseController implements mainuser {
         $this->display('registration');
     }
 
-    /**
-     * 获取用户签到信息 api
-     */
-    public function userRegistration() {
-        $postDate["source"] = SOURCE;
-        $postDate['open_id'] = $this->userOpenId;
-
-
-        $userRegistration = transferData(APIURL . "/registration/get_registeration", "post", $postDate);
-
-        $userRegistration_ = json_decode($userRegistration, true);
-
-
-        return $userRegistration_;
-    }
+    
 
     /**
      * 用户签到接口
      */
     public function registrationAction() {
 
-        $postDate["source"] = SOURCE;
-
-        $postDate['open_id'] = $this->userOpenId;
-
-
-        $userRegistrationA = transferData(APIURL . "/registration/userRegisterationIntegration", "post", $postDate);
-
-        $userRegistration_info = json_decode($userRegistrationA, true);
+      
+        P('user')->registrationAction($this->userOpenId);
 
         $this->registration();
     }

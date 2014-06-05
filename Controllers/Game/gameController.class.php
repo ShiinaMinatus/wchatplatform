@@ -43,11 +43,9 @@ class maingameController extends BaseController implements maingame {
         $this->able_register();
 
         $giftApi = new giftApi();
-        $info = $giftApi->getUserGameRecord($this->userOpenId, 1);
+        $info = P('gift')->getUserGameRecord($this->userOpenId, 1);
 
-        $error = new errorApi();
-
-        $error->JudgeError($info);
+       
         $this->display('bigWheelPage');
     }
 
@@ -60,13 +58,7 @@ class maingameController extends BaseController implements maingame {
 
         $info = $giftApi->getUserGameRecord($this->userOpenId, 2);
 
-        $error = new errorApi();
-
-        $error->JudgeError($info);
-
-        $scratchCard = new scratchCard();
-
-        $ScratchCardResults = $scratchCard->getScratchCardResults();
+        $ScratchCardResults = P('scratchCard')->getScratchCardResults();
 
         $this->assign("websiteurl", WebSiteUrl);
         $this->assign("ScratchCardResults", $ScratchCardResults);
@@ -95,6 +87,9 @@ class maingameController extends BaseController implements maingame {
         $this->able_register();
 
         $all = $this->getQuesion();
+        
+        
+        P('error')->JudgeError($all);
 
         $this->assign('info', $all['question']);
 
@@ -117,7 +112,7 @@ class maingameController extends BaseController implements maingame {
     }
 
     public function getQuesion() {
-        $quesionAll = transferData(APIURL . "/question/get_question/?source=" . SOURCE, "get");
+        $quesionAll = transferData(APIURL . "/question/get_question/?source=" . SOURCE.'&open_id='.$this->userOpenId, "get");
 
         $quesionResult = json_decode($quesionAll, true);
 
@@ -203,30 +198,17 @@ class maingameController extends BaseController implements maingame {
 
     public function getGameAward() {
 
-
-         $gift = new giftApi();
-
-
         if (!empty($_REQUEST['open_id']) && !empty($_REQUEST['gift_id'])) {
 
-           
-
-            $giftArray = $gift->getGiftInfo($_REQUEST['gift_id'], $_REQUEST['gift_type']);
-
-            $this->setDir('Public');
-
-
-            $this->assign('type', $_REQUEST['gift_type']);
-
+            $giftArray = P('gift')->getGiftInfo($_REQUEST['gift_id'], $_REQUEST['gift_type']);
 
             if ($_REQUEST['gift_type'] == 1) {
 
-
-
                 if(count($giftArray) > 0){
 
+                    $this->getBigWheeSendAward();
 
-                    $name = '恭喜你,你获得了1张'.$giftArray['gift_name'];
+                    die;
 
                 }  else{
 
@@ -238,13 +220,13 @@ class maingameController extends BaseController implements maingame {
 
             } else {
 
-
-
-
                 if(count($giftArray) > 0){
 
+                    //$name = '恭喜你,你获得了'.$giftArray['gift_name'];
 
-                    $name = '恭喜你,你获得了'.$giftArray['gift_name'];
+                     $this->getBigWheeSendAward();
+
+                     die;
 
                 }  else{
 
@@ -252,28 +234,15 @@ class maingameController extends BaseController implements maingame {
                      
                       $this->getBigWheelText();
 
+                      die;
+
                 }
 
             }
-
-
-
-            $this->assign('title', '领奖页面');
-
-            $this->assign('name', $name);
-
-
-
-            $this->assign('gift_id', $_REQUEST['gift_id']);
-
-            $this->assign('open_id', $_REQUEST['open_id']);
-
-            $this->display('success');
         }
     }
 
     public function getBigWheelText() {
-
 
         $this->setDir('Public');
 
@@ -286,19 +255,13 @@ class maingameController extends BaseController implements maingame {
 
     public function getBigWheeSendAward() {
 
-
         $this->setDir('Public');
 
-        
         if (!empty($_REQUEST['gift_id']) && !empty($_REQUEST['open_id'])) {
+ 
+            $awardResult = P('gift')->sendUserGift($_REQUEST['gift_id'], $_REQUEST['open_id'], $_REQUEST['gift_type']);
 
-            $gift = new giftApi();
-            
-            $awardResult = $gift->sendUserGift($_REQUEST['gift_id'], $_REQUEST['open_id'], $_REQUEST['type']);
-
-            $gift->addCardRecord($_REQUEST['gift_id'], $_REQUEST['open_id'], $_REQUEST['type']);
-
-
+            P('gift')->addCardRecord($_REQUEST['gift_id'], $_REQUEST['open_id'], $_REQUEST['gift_type']);
 
             /**
              * 如存在 则 兑换的内容为虚拟的内容

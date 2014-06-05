@@ -32,21 +32,29 @@ class mainerrorApi extends BaseController {
                      * 未注册  跳转注册页面
                      */
                     //R('/user/register','company',$var);
-
 //                    U(SOURCE.'/user/register', $var);
 
-                    if(SOURCE == 'Inhouse'){
+                    if (SOURCE == 'Inhouse') {
 
-                        U(SOURCE.'/user/ativating', $var);
+                        U(SOURCE . '/user/ativating', $var);
+                    } else {
 
-                    }  else{
 
-
-                         U(SOURCE.'/user/register', $var);
-
+                        U(SOURCE . '/user/register', $var);
                     }
-                    
+
                     die;
+                    break;
+
+                case '90001':
+
+                    if (!empty($this->error_list[$info['error']['error_status']])) {
+
+                        $this->displayMessage($this->error_list[$info['error']['error_status']],1);
+
+                        die;
+                    }
+
                     break;
 
                 default:

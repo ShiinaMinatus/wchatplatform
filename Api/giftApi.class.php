@@ -42,6 +42,12 @@ class maingiftApi {
 
         $giftInfoJson = transferData(APIURL . "/gift/get_user_gift_record", "post", $data);
         $giftInfoArray = json_decode($giftInfoJson, true);
+
+        $error = new errorApi();
+
+        $error->JudgeError($giftInfoArray);
+
+
         return $giftInfoArray;
     }
 

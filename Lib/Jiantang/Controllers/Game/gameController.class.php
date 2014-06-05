@@ -25,10 +25,13 @@ class gameController extends maingameController implements jiantanggame {
 
             $postDate['quesion_' . $value] = $_REQUEST[$value];
         }
-        $quesionResultJson = transferData(APIURL . "/question/add_question", "post", $postDate);
 
-        $quesionResultArray = json_decode($quesionResultJson, true);
+
+      
+        $quesionResultArray = P('question')->addCardRecord($postDate);
+
         $quersionPoint = $quesionResultArray["fraction"];
+
         if ($quersionPoint >= 71) {
             $message = "您的分数为：" . $quersionPoint . "分<br>您脊椎良好需保持，建议定期脊椎保养。";
         } else if ($quersionPoint >= 51) {
