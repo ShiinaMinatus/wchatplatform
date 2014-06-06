@@ -19,20 +19,17 @@ class maincodeApi {
 
         if (!empty($code_id)) {
             $data['code_id'] = $code_id;
-            $data['source'] = SOURCE;          
+            $data['source'] = SOURCE;
             $userInfoJson = transferData(APIURL . "/code/get_code_info", "post", $data);
             $userInfoArray = json_decode($userInfoJson, true);
             return $userInfoArray;
         }
     }
 
-
     /**
      *   优惠券 赠送接口
      */
-
-
-    public function giveCode($code_id,$open_id,$give_open_id){
+    public function giveCode($code_id, $open_id, $give_open_id) {
 
         if (!empty($code_id) && !empty($open_id) && !empty($give_open_id) && !empty($source)) {
             $data['code_id'] = $code_id;
@@ -40,32 +37,37 @@ class maincodeApi {
             $data['open_id'] = $open_id;
 
             $data['give_open_id'] = $give_open_id;
-            $data['source'] = SOURCE;          
+            $data['source'] = SOURCE;
 
             $userInfoJson = transferData(APIURL . "/code/give_code", "post", $data);
             $userInfoArray = json_decode($userInfoJson, true);
             return $userInfoArray;
         }
-
     }
 
+    public function getUserReceviceCode($code_type = 1) {
 
-    public function getUserReceviceCode($code_type = 1){
-
-         if (!empty($code_type) ) {
+        if (!empty($code_type)) {
 
             $data['code_type'] = $code_type;
 
-            $data['source'] = SOURCE;          
+            $data['source'] = SOURCE;
 
             $codeJson = transferData(APIURL . "/code/getReceiveCode", "post", $data);
             $codeArray = json_decode($codeJson, true);
             return $codeArray;
         }
-
     }
-    
-    
+
+    public function getUserCode($open_id) {
+        $postDate["source"] = SOURCE;
+        $postDate['open_id'] = $open_id;
+        $promoInfo = transferData(APIURL . "/code/getUserCode", "post", $postDate);
+        $promoInfo = json_decode($promoInfo, true);
+        $error = new errorApi();
+        $error->JudgeError($promoInfo);
+        return $promoInfo;
+    }
 
 }
 ?>

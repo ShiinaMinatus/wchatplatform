@@ -11,7 +11,7 @@
  *
  * @author zhaixiaoping
  */
-class exchangeApi extends mainexchangeApi{
+class exchangeApi extends mainexchangeApi {
 
     //put your code here
 
@@ -20,7 +20,16 @@ class exchangeApi extends mainexchangeApi{
         
     }
 
- 
+    public function reviseRecordState($goodsId) {
+        $postDate["source"] = SOURCE;
+        $postDate["id"] = $goodsId;
+        $exchangeData = transferData(APIURL . "/exchange/revise_record_state", "post", $postDate);
+        $exchangeData = json_decode($exchangeData, TRUE);
+        $error = new errorApi();
+        $error->JudgeError($exchangeData);
+        return $exchangeData;
+    }
+
 }
 
 ?>

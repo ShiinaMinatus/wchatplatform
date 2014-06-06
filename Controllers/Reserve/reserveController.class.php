@@ -24,7 +24,7 @@ class mainreserveController extends BaseController implements mainreserve {
 
             $this->userOpenId = $_REQUEST['open_id'];
         } else {
-            $this->userOpenId = 'ocpOot-COx7UruiqEfag_Lny7dlc';         
+            $this->userOpenId = 'ocpOot-COx7UruiqEfag_Lny7dlc';
         }
 
         $this->assign('open_id', $this->userOpenId);
@@ -45,28 +45,17 @@ class mainreserveController extends BaseController implements mainreserve {
         }
         $userOrder["source"] = SOURCE;
         $userOrder["open_id"] = $this->userOpenId;
-
-        $userJsonData = transferData(APIURL . "/order/get_order", "post", $userOrder);
-        $orderItem = json_decode($userJsonData, true);
-         $error = new errorApi();
-         $error->JudgeError($orderItem);
+        $orderItem = P("order")->get_order($this->userOpenId);
         $nowTime = time();
         $orderTime = $orderItem["order"]["appointment_time"];
         if ($_GET["checkReturn"] == 1) {
             
         } else if ((int) $orderTime > $nowTime) {
-            $this->displayMessage("你已经有正在进行的订单，请执行<a href='" . WebSiteUrl . "?g=".SOURCE."&a=reserve&v=orderCheck&open_id=" . $this->userOpenId . "'>查看订单</a>操作");
+            $this->displayMessage("你已经有正在进行的订单，请执行<a href='" . WebSiteUrl . "?g=" . SOURCE . "&a=reserve&v=orderCheck&open_id=" . $this->userOpenId . "'>查看订单</a>操作");
         }
-        $selectReturnVal = transferData(APIURL . "/order/get_merchandise", "post",$userOrder);
-        
-       
-        $selectVal = json_decode($selectReturnVal, true);
 
-        $error->JudgeError($selectVal);
-        //var_dump($selectReturnVal);
+        $selectVal = P("order")->getMerchandise();
         $this->assign("selectVal", $selectVal);
-
-        // $this->assign('open_id', $_REQUEST['open_id']);
         $this->display();
     }
 
@@ -90,12 +79,8 @@ class mainreserveController extends BaseController implements mainreserve {
             //查询预约项目所需金额
             $merchandiseDate['source'] = SOURCE;
             $merchandiseDate['merchandise_id'] = $returnVal['orderMerchandise'];
-            $merchandise = transferData(APIURL . "/order/get_merchandise_info", "post", $merchandiseDate);
-            $merchandise = json_decode($merchandise, TRUE);
+            $merchandise = P("order")->getMerchandiseInfo($returnVal['orderMerchandise']);
 
-            $error = new errorApi();
-
-            $error->JudgeError($merchandise);
 
             $returnVal['merchandiseIteams'] = $merchandise['merchandise']['merchandise_name'];
             $returnVal['needMoney'] = $merchandise['merchandise']['merchandise_money'];
@@ -108,19 +93,10 @@ class mainreserveController extends BaseController implements mainreserve {
             $postDate["appointment_time"] = $postTime;
             $postDate["appointment_object"] = $returnVal['orderObject'];
             if (isset($_GET['checkReturn'])) {//修改订单
-                $userOrder["source"] =SOURCE;
-                $userOrder["open_id"] = $this->userOpenId;
-                $userJsonData = transferData(APIURL . "/order/get_order", "post", $userOrder);
-                $orderItem = json_decode($userJsonData, true);
-                $error = new errorApi();
-
-                $error->JudgeError($orderItem);
-
-
+                $orderItem = P("order")->get_order($this->userOpenId);
                 $orderCode = $orderItem["order"]['order_code'];
                 $postDate["order_code"] = $orderCode;
-                $reviseOrder = transferData(APIURL . "/order/revise_order", "post", $postDate);
-                $orderChangeIsScuess = json_decode($reviseOrder, TRUE);
+                $orderChangeIsScuess = P("order")->reviseOrder($returnVal, $postTime, $orderCode, $this->userOpenId);
 
                 if ($orderChangeIsScuess["res"] == "1") {
                     
@@ -130,11 +106,8 @@ class mainreserveController extends BaseController implements mainreserve {
                     die;
                 }
             } else {//插入订单
-                $userJsonData = transferData(APIURL . "/order/add", "post", $postDate);
-                $thisUserData = $this->userData = json_decode($userJsonData, TRUE);
+                $thisUserData = P("order")->orderAdd($returnVal, $postTime, $this->userOpenId);
 
-                $error = new errorApi();
-                $error->JudgeError($thisUserData);
 
                 if ($thisUserData["error"]["error_status"] == "30005") {
                     $this->errorMessage = 1;
@@ -146,10 +119,7 @@ class mainreserveController extends BaseController implements mainreserve {
                 }
             }
         } else {
-            $userOrder["source"] = SOURCE;
-            $userOrder["open_id"] = $this->userOpenId;
-            $userJsonData = transferData(APIURL . "/order/get_order", "post", $userOrder);
-            $orderItem = json_decode($userJsonData, true);
+            $orderItem = P("order")->get_order($this->userOpenId);
             if (empty($orderItem['order'])) {
 
                 $this->displayMessage('暂无订单');
@@ -170,11 +140,7 @@ class mainreserveController extends BaseController implements mainreserve {
             $returnVal["weekNum"] = $weekName[$orderweek];
             $returnVal["orderDateInput"] = $orderDate;
             $returnVal["orderTimeInput"] = $orderTime;
-
-            $postUserDate['source'] = SOURCE;
-            $postUserDate['merchandise_id'] = $orderString['merchandise_id'];
-            $MerchandiseValue = transferData(APIURL . "/order/get_merchandise_info", "post", $postUserDate);
-            $MerchandiseValue = json_decode($MerchandiseValue, true);
+            $MerchandiseValue = P("order")->getMerchandiseInfo($orderString['merchandise_id']);
             $returnVal['merchandiseIteams'] = $MerchandiseValue['merchandise']['merchandise_name'];
             $returnVal['needMoney'] = $MerchandiseValue['merchandise']['merchandise_money'];
             $returnVal['orderMerchandise'] = $orderString['merchandise_id'];
@@ -217,7 +183,7 @@ class mainreserveController extends BaseController implements mainreserve {
 
             if ($reviseOrderStateReturnValue['res'] == '1') {
 
-                $this->displayMessage("取消成功<a href='" . WebSiteUrl . "?g="+MODULE_DIR_NAME+"&a=user&v=order'>返回</a>");
+                $this->displayMessage("取消成功<a href='" . WebSiteUrl . "?g=" + MODULE_DIR_NAME + "&a=user&v=order'>返回</a>");
             }
         } else {
             $activateOrderJsonValue = transferData(APIURL . "/order/get_order", "post", $userGetOrder);
@@ -243,8 +209,7 @@ class mainreserveController extends BaseController implements mainreserve {
 
                 $postUserDate['source'] = SOURCE;
                 $postUserDate['merchandise_id'] = $activateOrderValue["order"]['merchandise_id'];
-                $MerchandiseValue = transferData(APIURL . "/order/get_merchandise_info", "post", $postUserDate);
-                $MerchandiseValue = json_decode($MerchandiseValue, true);
+                $MerchandiseValue = P("order")->getMerchandiseInfo($activateOrderValue["order"]['merchandise_id']);
                 $activateOrderValue["order"]['orderMerchandise'] = $MerchandiseValue['merchandise']['merchandise_name'];
                 $activateOrderValue["order"]['needMoney'] = $MerchandiseValue['merchandise']['merchandise_money'];
 
@@ -273,25 +238,14 @@ class mainreserveController extends BaseController implements mainreserve {
         $this->able_register();
         $postDate["source"] = SOURCE;
         $postDate['open_id'] = $this->userOpenId;
-        $userInfo = transferData(APIURL . "/user/get_info", "post", $postDate);
-        $userInfo = json_decode($userInfo, TRUE);
-        $error = new errorApi();
-        $error->JudgeError($userInfo);
+        $userInfo = P('user')->getUserInfo($this->userOpenId);
 
-        $promoInfo = transferData(APIURL . "/code/getUserCode", "post", $postDate);
-        $promoInfo = json_decode($promoInfo, true);
-        $error->JudgeError($promoInfo);
 
-        $userJsonData = transferData(APIURL . "/order/get_order", "post", $postDate);
-        $orderItem = json_decode($userJsonData, true);
-        $error->JudgeError($orderItem);
+        $promoInfo = P('code')->getUserCode($this->userOpenId);
+        $orderItem = P("order")->get_order($this->userOpenId);
         $nowTime = time();
         $userOrder = $orderItem["order"];
-        $merchandiseDate['source'] = SOURCE;
-        $merchandiseDate['merchandise_id'] = $userOrder['merchandise_id'];
-        $merchandise = transferData(APIURL . "/order/get_merchandise_info", "post", $merchandiseDate);
-        $merchandise = json_decode($merchandise, TRUE);
-        $error->JudgeError($merchandise);
+        $merchandise = P("order")->getMerchandiseInfo($userOrder['merchandise_id']);
         $costMoney = $merchandise['merchandise']["merchandise_money"];
         if ($nowTime > $userOrder["appointment_time"]) {
 
@@ -305,13 +259,11 @@ class mainreserveController extends BaseController implements mainreserve {
     }
 
     public function orderPayPage() {
-        $error = new errorApi();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $payData["source"] = SOURCE;
             $payData['open_id'] = $this->userOpenId;
-            $userJsonData = transferData(APIURL . "/order/get_order", "post", $payData);
-            $orderItem = json_decode($userJsonData, true);
-            $error->JudgeError($orderItem);
+
+            $orderItem = P("order")->get_order($this->userOpenId);
             $userOrder = $orderItem["order"];
             $payData["order_price"] = $_POST["costMoney"];
             $payData["order_code"] = $userOrder["order_code"];
@@ -319,7 +271,7 @@ class mainreserveController extends BaseController implements mainreserve {
             if ($_GET["payType"] == "weixin") {
                 
             } else if ($_GET["payType"] == "store") {
-                $this->displayMessage("您已经成功提交订单，请在预约时间内到店消费。<a href='" . WebSiteUrl . "?g=".SOURCE."&a=reserve&v=orderCheck&open_id=" . $this->userOpenId . "'>查看订单</a>",1);
+                $this->displayMessage("您已经成功提交订单，请在预约时间内到店消费。<a href='" . WebSiteUrl . "?g=" . SOURCE . "&a=reserve&v=orderCheck&open_id=" . $this->userOpenId . "'>查看订单</a>", 1);
             }
 //                $pay = transferData(APIURL . "/order/revise_order_pay", "post", $payData);
 //                $pay = json_decode($pay, TRUE);
@@ -331,7 +283,7 @@ class mainreserveController extends BaseController implements mainreserve {
 //                }
 //            }
         } else {
-            $this->displayMessage("url请求出错请<a href='" . WebSiteUrl . "?g=".SOURCE."&a=order&v=orderCheck&open_id=" . $this->userOpenId . "'>返回</a>重试。");
+            $this->displayMessage("url请求出错请<a href='" . WebSiteUrl . "?g=" . SOURCE . "&a=order&v=orderCheck&open_id=" . $this->userOpenId . "'>返回</a>重试。");
         }
     }
 

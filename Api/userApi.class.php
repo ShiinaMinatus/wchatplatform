@@ -35,12 +35,12 @@ class mainuserApi {
     public function ableUser($open_id) {
 
 
-   
+
         if (!empty($open_id)) {
             $data['open_id'] = $open_id;
             $data['source'] = SOURCE;
             $userInfoJson = transferData(APIURL . "/user/able_user", "post", $data);
-            
+
             $userInfoArray = json_decode($userInfoJson, true);
 
             return $userInfoArray;
@@ -82,6 +82,29 @@ class mainuserApi {
 
 
             return $userInfoArray;
+        }
+    }
+
+    //更新用户地址数据 ly 2016/6/6
+    public function updateUserAddress($updateDateArray, $openId) {
+        if (is_array($updateDateArray)) {
+            $postData['address_phone'] = $updateDateArray["address_phone"];
+            $postData['province_id'] = $updateDateArray["province_id"];
+            $postData['city_id'] = $updateDateArray["city_id"];
+            $postData['area_id'] = $updateDateArray["area_id"];
+            $postData['street'] = $updateDateArray["street"];
+            $postData['real_name'] = $updateDateArray["real_name"];
+            $postData['open_id'] = $openId;
+            $postData['source'] = SOURCE;
+            $updateUserLocation = transferData(APIURL . "/user/update_user_address", "post", $postData);
+            $updateUserLocation = json_decode($updateUserLocation, TRUE);
+
+            $error = new errorApi();
+
+            $error->JudgeError($updateUserLocation);
+            return $updateUserLocation;
+        } else {
+            throw "function updateUserAddress() incoming parameters must be array";
         }
     }
 

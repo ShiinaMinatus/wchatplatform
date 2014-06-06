@@ -35,22 +35,12 @@ class mainexchangeController extends BaseController implements mainexchange {
 
 
         $this->able_register();
-        $postDate["source"] = SOURCE;
-        $postDate['open_id'] = $this->userOpenId;
         //$this->userOpenId = $_REQUEST['open_id'];
-        $exchangeList = transferData(APIURL . "/exchange/get_exchange_list?source=" . SOURCE . "&open_id=" . $this->userOpenId, "get");
-        $exchangeList = json_decode($exchangeList, true);
-
-        $userInfo = transferData(APIURL . "/user/get_info", "post", $postDate);
-        $userInfo = json_decode($userInfo, TRUE);
-
-
+        $exchangeList = P('exchange')->getExchangeList($this->userOpenId);
+        $userInfo = P('exchange')->getUserInfo($this->userOpenId);
 
         $weixinUserInfo = $userInfo['weixin_user'];
         $localUserInfo = $userInfo['user'];
-        $error = new errorApi();
-        $error->JudgeError($exchangeList);
-        $error->JudgeError($userInfo);
         $this->assign("WebImageUrl", WebImageUrl);
         $this->assign("exchangeList", $exchangeList);
         $this->assign("localUserInfo", $localUserInfo);
@@ -81,32 +71,21 @@ class mainexchangeController extends BaseController implements mainexchange {
             $postDate["source"] = SOURCE;
             $postDate['open_id'] = $this->userOpenId;
             $goodsId = $_GET['goodsId'];
-            $exchangeItem = transferData(APIURL . "/exchange/get_exchange_info", "post", $postDate);
-            $exchangeItem = json_decode($exchangeItem, true);
-
-            $error = new errorApi();
-
-            $error->JudgeError($exchangeItem);
-
+            $exchangeItem = P('exchange')->getExchangeInfo($goodsId);            //获取兑换物品详情
             if ($exchangeItem['exchange_info']["exchange_type"] == "1") {
-                $userInfo = transferData(APIURL . "/user/get_info", "post", $postDate);
-                $userInfo = json_decode($userInfo, TRUE);
-
-                $error = new errorApi();
-
-                $error->JudgeError($userInfo);
+                $userInfo = P('user')->getUserInfo($this->userOpenId);
                 if ($userInfo['user']['province_id'] == "0") {
                     $this->assign("userMessage", $userInfo['user']);
                     $this->locationCheck(); //填写信息              
                 } else {
-                    // var_dump($userInfo); //显示地址页面     
+                    //显示填写地址页面     
                     $userData['street'] = $userInfo['user']['street'];
                     $userData['address_phone'] = $userInfo['user']['address_phone'];
                     $userData['real_name'] = $userInfo['user']['real_name'];
                     $userData['area_id'] = $userInfo['user']['area_id'];
                     $userData['city_id'] = $userInfo['user']['city_id'];
                     $userData['province_id'] = $userInfo['user']['province_id'];
-                    $getProvince = transferData(APIURL . "/area/get_area", "get");
+                    $getProvince = P('area')->getJsonArea();
                     $getProvince = json_decode($getProvince, true);
 
                     $error = new errorApi();
@@ -134,7 +113,7 @@ class mainexchangeController extends BaseController implements mainexchange {
     }
 
     public function locationCheck() {
-        $getProvince = transferData(APIURL . "/area/get_area", "get");
+        $getProvince = P('area')->getJsonArea();
         $getProvince = json_decode($getProvince, true);
 
         $error = new errorApi();
@@ -142,11 +121,7 @@ class mainexchangeController extends BaseController implements mainexchange {
         $error->JudgeError($getProvince);
 
         array_pop($getProvince);
-
-
-
         $getTown = $this->getAreaMessage($getProvince[0]['area_id']);
-
         $getTown = json_decode($getTown, true);
         $getArea = $this->getAreaMessage($getTown[0]['area_id']);
         $getArea = json_decode($getArea, true);
@@ -165,9 +140,9 @@ class mainexchangeController extends BaseController implements mainexchange {
         } else {
             $areaId = $areaId;
         }
-        $postDate['area_id'] = $areaId;
-        $postData['source'] = SOURCE;
-        $getArea = transferData(APIURL . "/area/get_area", "post", $postDate);
+
+
+        $getArea = P('area')->getJsonArea($areaId);
         if ($requestFlag) {
             return $getArea;
         } else {
@@ -179,21 +154,7 @@ class mainexchangeController extends BaseController implements mainexchange {
     public function updateUserLocation() {
         if (isset($_POST["gNumber"])) {
             if (ctype_digit($_POST["gNumber"])) {
-                $postData['address_phone'] = $_POST["address_phone"];
-                $postData['province_id'] = $_POST["province_id"];
-                $postData['city_id'] = $_POST["city_id"];
-                $postData['area_id'] = $_POST["area_id"];
-                $postData['street'] = $_POST["street"];
-                $postData['real_name'] = $_POST["real_name"];
-                $postData['open_id'] = $this->userOpenId;
-                $postData['source'] = SOURCE;
-                $updateUserLocation = transferData(APIURL . "/user/update_user_address", "post", $postData);
-                $updateUserLocation = json_decode($updateUserLocation, TRUE);
-
-                $error = new errorApi();
-
-                $error->JudgeError($updateUserLocation);
-
+                $updateUserLocation = P('user')->updateUserAddress($_POST, $this->userOpenId);
                 if ($updateUserLocation["res"] == 1) {
                     $_GET['goodsId'] = $_POST["gNumber"];
                     $this->changeGoodsResult();
@@ -223,17 +184,9 @@ class mainexchangeController extends BaseController implements mainexchange {
 
 
         if (isset($_GET['goodsId'])) {
-            $postDate["source"] = SOURCE;
-            $postDate['open_id'] = $this->userOpenId;
-            $postDate['id'] = $_GET['goodsId'];
-            $exchangeList = transferData(APIURL . "/exchange/redeem", "post", $postDate);
-            $exchangeList = json_decode($exchangeList, TRUE);
 
-            $error = new errorApi();
-
-            $error->JudgeError($exchangeList);
-
-
+            $goodsId = $_GET['goodsId'];
+            $exchangeList = P('exchange')->redeem($goodsId, $this->userOpenId);
             $userIntegration = $exchangeList['user_integration']['user_integration'];
             $userChangeInfo = $exchangeList['exchange_info'];
             $this->assign("integration", $userIntegration);
@@ -260,8 +213,8 @@ class mainexchangeController extends BaseController implements mainexchange {
 
             $exchangeApi = new exchangeApi();
 
-            $exchangeReocrd = $exchangeApi->getUserExchangeInfo($this->userOpenId, 'Inhouse');
-            $this->assign("WebImageUrl", WebImageUrl . "small/");
+            $exchangeReocrd = $exchangeApi->getUserExchangeInfo($this->userOpenId);
+            $this->assign("WebImageUrl", WebImageUrl);
 
             $this->assign('exchangeList', $exchangeReocrd);
 

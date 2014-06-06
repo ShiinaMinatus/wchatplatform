@@ -1,4 +1,5 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +11,7 @@
  *
  * @author zhaixiaoping
  */
-class exchangeController extends mainexchangeController  implements jiantangexchange{
+class exchangeController extends mainexchangeController implements jiantangexchange {
 
     //put your code here
 
@@ -50,32 +51,26 @@ class exchangeController extends mainexchangeController  implements jiantangexch
             $postDate["start_point"] = 0;
             $postDate["end_point"] = 300;
         }
-        $exchangeList = transferData(APIURL . "/exchange/get_exchange_list", "post", $postDate);
-        $exchangeList = json_decode($exchangeList, true);
-        $userInfo = transferData(APIURL . "/user/get_info", "post", $postDate);
-        $userInfo = json_decode($userInfo, TRUE);
+        $exchangeList = P('exchange')->getExchangeList($this->userOpenId);
+        $userInfo = P('user')->getUserInfo($this->userOpenId);
         $weixinUserInfo = $userInfo['weixin_user'];
         $localUserInfo = $userInfo['user'];
-        $error = new errorApi();
-        $error->JudgeError($exchangeList);
-        $error->JudgeError($userInfo);
         $this->assign("WebImageUrl", WebImageUrl);
         $this->assign("exchangeList", $exchangeList);
         $this->assign("localUserInfo", $localUserInfo);
         $this->assign("weixinUserInfo", $weixinUserInfo);
         $this->assign("groupBy", $groupBy);
         $this->display("getExchangeList");
-    }    
+    }
+
     //用户收货
     public function changeGoodsState() {
         if (isset($_GET['goodsId'])) {
-            $postDate["source"] = SOURCE;
-            $postDate["id"] = $_GET['goodsId'];
-            $exchangeData = transferData(APIURL . "/exchange/revise_record_state", "post", $postDate);
-            $exchangeData = json_decode($exchangeData, TRUE);
-            if($exchangeData['res']==1){
+            $goodsId = $_GET['goodsId'];
+            $exchangeData = P('exchange')->reviseRecordState($goodsId);
+            if ($exchangeData['res'] == 1) {
                 $this->getUserExchangeRecord();
-            }else{
+            } else {
                 $this->displayMessage("网络请求失败或者您已经确认收货");
             }
         }
