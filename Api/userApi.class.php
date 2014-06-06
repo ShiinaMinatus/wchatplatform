@@ -100,7 +100,27 @@ class mainuserApi {
 
     public function addUser($data){
 
-           $resultRegisterJson = transferData(APIURL . '/user/add', 'post', $data);
+
+           $jsondata = array();
+
+           $jsondata['open_id'] = $data['open_id'];
+
+           $jsondata['source'] = SOURCE;
+
+           $jsondata['user_name'] = $data['userName'];
+
+           $jsondata['sex'] = $data['gender'];
+
+           $jsondata['user_phone'] = $data['phoneNumber'];
+
+           $jsondata['birthday'] = strtotime($data['year'] . '-' . $data['month'] . '-' . $data['date']);
+
+
+           var_dump($jsondata);
+
+           die;
+
+           $resultRegisterJson = transferData(APIURL . '/user/add', 'post', $jsondata);
 
            $resultRegisterArray = json_decode($resultRegisterJson, true);
 
