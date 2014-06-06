@@ -73,20 +73,6 @@ class mainuserController extends BaseController implements mainuser {
 
                     if (!empty($_REQUEST['userName'])) {
 
-                        $data = array();
-
-                        $data['open_id'] = $_REQUEST['open_id'];
-
-                        $data['source'] = SOURCE;
-
-                        $data['user_name'] = $_REQUEST['userName'];
-
-                        $data['sex'] = $_REQUEST['gender'];
-
-                        $data['user_phone'] = $_REQUEST['phoneNumber'];
-
-                        $data['birthday'] = strtotime($_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['date']);
-                       
                         P('user')->ableUser($_REQUEST['open_id']);
 
                         if ($resultRenameArray['success'] == 1) {
@@ -100,7 +86,7 @@ class mainuserController extends BaseController implements mainuser {
 
                             // $error->JudgeError($resultRegisterArray);
 
-                            $resultRegisterArray = P('user')->addUser($data);
+                            $resultRegisterArray = P('user')->addUser($_REQUEST);
 
                             if ($resultRegisterArray['user']['user_id'] > 0) {
 
