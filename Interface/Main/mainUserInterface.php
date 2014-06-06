@@ -51,17 +51,6 @@ interface mainuser{
 	 */
 	public function registration();
 
-	/**
-	 *  获取用户签到api 调用
-	 */
-
-	public function userRegistration();
-
-	/**
-	 *  用户签到api接口
-	 */
-
-	public function registrationAction();
 
 }
 

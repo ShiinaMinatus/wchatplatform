@@ -41,13 +41,23 @@ class maincodeApi {
 
             $userInfoJson = transferData(APIURL . "/code/give_code", "post", $data);
             $userInfoArray = json_decode($userInfoJson, true);
+
+
+            $error = new errorApi();
+
+            $error->JudgeError($codeResult);
+
             return $userInfoArray;
         }
     }
 
+    /**
+     * 获取优惠吗
+     */
     public function getUserReceviceCode($code_type = 1) {
 
         if (!empty($code_type)) {
+
 
             $data['code_type'] = $code_type;
 
@@ -67,6 +77,26 @@ class maincodeApi {
         $error = new errorApi();
         $error->JudgeError($promoInfo);
         return $promoInfo;
+    }
+
+    /**
+     * 获取用户所有的优惠吗
+     */
+    public function get_user_code($open_id) {
+
+        $postDate["source"] = SOURCE;
+
+        $postDate['open_id'] = $open_id;
+
+        $userCode = transferData(APIURL . "/code/get_user_code", "post", $postDate);
+
+        $userCode = json_decode($userCode, true);
+
+        $error = new errorApi();
+
+        $error->JudgeError($userCode);
+
+        return $userCode;
     }
 
 }

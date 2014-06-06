@@ -10,7 +10,7 @@
  *
  * @author Administrator
  */
-class mainscratchCard {
+class mainscratchCardApi {
 
     public function __construct() {
         

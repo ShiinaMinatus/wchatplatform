@@ -40,6 +40,9 @@ class mainexchangeApi {
             return $userInfoArray;
         }
     }
+    
+    
+ 
 
     public function getExchangeList($open_id) {
         $postDate["source"] = SOURCE;

@@ -15,13 +15,21 @@ class mainuserApi {
      * @param varchar $source  微信公众平台来源
      * @return array   返回为已经解析完成的数组
      */
-    public function getUserInfo($open_id) {
+    public function getUserInfo($open_id, $type = 0) {
 
         if (!empty($open_id)) {
             $data['open_id'] = $open_id;
             $data['source'] = SOURCE;
             $userInfoJson = transferData(APIURL . "/user/get_info", "post", $data);
             $userInfoArray = json_decode($userInfoJson, true);
+
+
+            if ($type != 1) {
+
+                P('error')->JudgeError($userInfoArray);
+            }
+
+
             return $userInfoArray;
         }
     }
@@ -43,6 +51,8 @@ class mainuserApi {
 
             $userInfoArray = json_decode($userInfoJson, true);
 
+            P('error')->JudgeError($userInfoArray);
+
             return $userInfoArray;
         }
     }
@@ -60,6 +70,7 @@ class mainuserApi {
             $data['source'] = SOURCE;
             $userInfoJson = transferData(APIURL . "/code/get_user_code", "post", $data);
             $userInfoArray = json_decode($userInfoJson, true);
+            P('error')->JudgeError($userInfoArray);
             return $userInfoArray;
         }
     }
@@ -76,16 +87,14 @@ class mainuserApi {
             $userInfoJson = transferData(APIURL . "/user/getUserRecord", "post", $data);
             $userInfoArray = json_decode($userInfoJson, true);
 
-            $error = new errorApi();
-
-            $error->JudgeError($userInfoArray);
+            P('error')->JudgeError($userInfoArray);
 
 
             return $userInfoArray;
         }
     }
 
-    //更新用户地址数据 ly 2016/6/6
+//更新用户地址数据 ly 2016/6/6
     public function updateUserAddress($updateDateArray, $openId) {
         if (is_array($updateDateArray)) {
             $postData['address_phone'] = $updateDateArray["address_phone"];
@@ -106,6 +115,77 @@ class mainuserApi {
         } else {
             throw "function updateUserAddress() incoming parameters must be array";
         }
+    }
+
+    /**
+     * 添加用户
+     */
+    public function addUser($data) {
+
+        $resultRegisterJson = transferData(APIURL . '/user/add', 'post', $data);
+
+        $resultRegisterArray = json_decode($resultRegisterJson, true);
+
+        $error = new errorApi();
+
+        $error->JudgeError($resultRegisterArray);
+
+
+        return $resultRegisterArray;
+    }
+
+    /**
+     * 用户 订单 兑换   验证码 状态
+     */
+    public function getUserStatus($open_id) {
+
+        $data['open_id'] = $open_id;
+
+        $data['source'] = SOURCE;
+
+        $resultRegisterJson = transferData(APIURL . '/user/get_info_status', 'post', $data);
+
+        $resultRegisterArray = json_decode($resultRegisterJson, true);
+
+        $error = new errorApi();
+
+        $error->JudgeError($resultRegisterArray);
+
+
+        return $resultRegisterArray;
+    }
+
+    /**
+     * 获取用户签到信息 api
+     */
+    public function userRegistration($open_id) {
+
+        $postDate["source"] = SOURCE;
+
+        $postDate['open_id'] = $open_id;
+
+
+        $userRegistration = transferData(APIURL . "/registration/get_registeration", "post", $postDate);
+
+        $userRegistration_ = json_decode($userRegistration, true);
+
+
+        return $userRegistration_;
+    }
+
+    /**
+     * 
+     */
+    public function registrationAction($open_id) {
+
+        $postDate["source"] = SOURCE;
+
+        $postDate['open_id'] = $open_id;
+
+
+        $userRegistrationA = transferData(APIURL . "/registration/userRegisterationIntegration", "post", $postDate);
+
+        $userRegistration_info = json_decode($userRegistrationA, true);
     }
 
 }

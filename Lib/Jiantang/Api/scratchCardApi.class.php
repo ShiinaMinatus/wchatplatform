@@ -10,7 +10,7 @@
  *
  * @author Administrator
  */
-class scratchCard  extends mainscratchCard{
+class scratchCardApi  extends mainscratchCardApi{
 
     
 

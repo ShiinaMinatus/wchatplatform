@@ -9,10 +9,10 @@ class userController extends mainuserController implements inhouseuser {
         if (!empty($_REQUEST['open_id'])) {
 
             $this->userOpenId = $_REQUEST['open_id'];
-        } 
+        }
 
         $this->assign('open_id', $this->userOpenId);
-    }    
+    }
 
     /**
      * 用户积分 获取博卡消费记录
@@ -22,66 +22,50 @@ class userController extends mainuserController implements inhouseuser {
         $this->able_register();
 
 
-        $userMessage["source"] = SOURCE;
-        $userMessage["open_id"] = $this->userOpenId;
+        $userInfo = P('user')->getUserInfo($this->userOpenId);
 
 
-        $userInfo = transferData(APIURL . "/user/get_info", "post", $userMessage);
+        $expenseItem = P('user')->getCardInfo($this->userOpenId, 1);
 
-        $userInfo = json_decode($userInfo, TRUE);
 
-        $userMessage["source"] = SOURCE;
-        $userMessage["open_id"] = $this->userOpenId;
-
-        $userMessage['type'] = 1;
-
-        
-        $userJsonData = transferData(APIURL . "/user/getUserCardInfo/", "post", $userMessage);
-
-        $expenseItem = json_decode($userJsonData, true);
-
-       
         $userInfo['user']['user_phone'] = phoneStart($userInfo['user']['user_phone']);
 
         $xval = array();
 
         $yval = array();
 
-        if(count($expenseItem['record']) > 0){
+        if (count($expenseItem['record']) > 0) {
 
             $result = $expenseItem['record'];
 
-            foreach($result as $v){
+            foreach ($result as $v) {
 
                 $tempArray = array();
 
                 $time = strtotime($v['order_time']);
 
-                $val = date('y/m/d',$time);
+                $val = date('y/m/d', $time);
 
                 array_push($tempArray, $v['record_commodity']);
 
-                array_push($tempArray, (int)$v['money']);
+                array_push($tempArray, (int) $v['money']);
 
                 array_unshift($xval, $val);
 
-                array_unshift($yval,$tempArray);
+                array_unshift($yval, $tempArray);
 
                 // array_push($xval, $val);
-
                 // array_push($yval, (int)$v['money']);
 
                 unset($tempArray);
             }
+        } else {
 
-        } else{
+            for ($i = 0; $i < 12; $i++) {
 
-            for($i = 0 ; $i< 12 ; $i++){
+                array_push($yval, 0);
 
-                array_push($yval,0);
-
-                array_push($xval,'');
-
+                array_push($xval, '');
             }
         }
 
@@ -90,9 +74,9 @@ class userController extends mainuserController implements inhouseuser {
 
         $this->assign("YVAL", json_encode($yval));
 
-        $this->assign('record_state',1);
+        $this->assign('record_state', 1);
 
-      
+
         $this->assign("userInfo", $userInfo["user"]);
 
 
@@ -105,34 +89,25 @@ class userController extends mainuserController implements inhouseuser {
     /**
      * 手机绑定
      */
-
-    public function bind(){
+    public function bind() {
 
         if (!empty($_REQUEST['phone']) && !empty($this->userOpenId)) {
 
-            $userApi = new userApi();
-
-            $info = $userApi->bind($_REQUEST['phone'],$this->userOpenId);
-
-            $error = new errorApi();
-
-            $error->JudgeError($info);
+            P('user')->bind($_REQUEST['phone'], $this->userOpenId);
 
             $array = array();
 
             $array['open_id'] = $this->userOpenId;
 
-            $url = U(SOURCE.'/user/userCenter',$array,1);
+            $url = U(SOURCE . '/user/userCenter', $array, 1);
 
-            $this->displayMessage("恭喜绑定成功",1,$url,'个人中心');
-        } else{
+            $this->displayMessage("恭喜绑定成功", 1, $url, '个人中心');
+        } else {
 
-            $this->displayMessage("手机号码不能为空",0);
+            $this->displayMessage("手机号码不能为空", 0);
         }
-
     }
 
-    
     /**
      * 博卡 用户消费记录 显示5条
      */
@@ -141,18 +116,13 @@ class userController extends mainuserController implements inhouseuser {
 
         $this->able_register();
 
-        $error = new errorApi();
-        $userMessage["source"] = SOURCE;
-        $userMessage["open_id"] = $this->userOpenId;
 
-        $userInfo = transferData(APIURL . "/user/get_info", "post", $userMessage);
-        $userInfo = json_decode($userInfo, TRUE);
-        $userMessage["type"] = 1;
-        $userJsonData = transferData(APIURL . "/user/getUserCardInfo/", "post", $userMessage);
-        $expenseItem = json_decode($userJsonData, true);
-        $error->JudgeError($expenseItem);
 
-        $this->assign('state',count($expenseItem["record"]) > 0 ? 1:0);
+        $userInfo = P('user')->getUserInfo($this->userOpenId);
+
+        $expenseItem = P('user')->getCardInfo($this->userOpenId, 1);
+
+        $this->assign('state', count($expenseItem["record"]) > 0 ? 1 : 0);
 
         $this->assign("expenseItem", $expenseItem["record"]);
         $this->assign("userInfoWeixin", $userInfo["weixin_user"]);
@@ -160,21 +130,16 @@ class userController extends mainuserController implements inhouseuser {
         $this->display();
     }
 
-
     /**
      * 博卡 手机  激活页面
      */
-
     public function ativating() {
 
+        $userInfo = P('user')->ableUser($this->userOpenId);
 
-        $userApi = new userApi();
+        if (!empty($userInfo['error']) && $userInfo['error']['error_status'] == 20002) {
 
-        $userInfo = $userApi->ableUser($this->userOpenId);
-
-        if(!empty($userInfo['error']) && $userInfo['error']['error_status'] == 20002){
-
-            $this->displayMessage('用户已绑定',0);
+            $this->displayMessage('用户已绑定', 0);
 
             die;
         }

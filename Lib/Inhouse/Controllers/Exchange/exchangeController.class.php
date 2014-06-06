@@ -9,7 +9,6 @@ class exchangeController extends mainexchangeController implements inhouseexchan
 
         $exchange_integration = (int) $_REQUEST['exchange_integration'];
 
-
         if ($user_integration < $exchange_integration) {
 
             $this->displayMessage('积分不够');
@@ -20,14 +19,9 @@ class exchangeController extends mainexchangeController implements inhouseexchan
 
         if (!empty($_REQUEST["exchangeId"])) {
             $exchangeId = $_REQUEST["exchangeId"];
-            $postDate["source"] = SOURCE;
-            $postDate['open_id'] = $this->userOpenId;
-            $postDate['exchange_id'] = $exchangeId;
-            $exchangeCode = transferData(APIURL . "/exchange/create/", "post", $postDate);
-            $exchangeCode = json_decode($exchangeCode, TRUE);
-            $error = new errorApi();
-            $exchangeCode["code"] = strtoupper($exchangeCode["code"]);
-            $error->JudgeError($exchangeCode);
+
+            $exchangeCode = P('exchange')->getExchangeCode($this->userOpenId, $exchangeId);
+
             $this->assign('exchangeCode', $exchangeCode);
 
             $this->display('getExchangeCode');
