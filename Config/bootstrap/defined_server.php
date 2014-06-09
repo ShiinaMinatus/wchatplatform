@@ -8,9 +8,9 @@
  */
 defined('ROOT_DIR') or define('ROOT_DIR',  getcwd());
 
-//defined('WebSiteName') or define('WebSiteName', 'yajie_weixin_crm_new/wchatplatform');
+defined('WebSiteName') or define('WebSiteName', 'yajie_weixin_crm/wchatplatform');
 
-defined('WebSiteName') or define('WebSiteName', '/wchatplatform');
+//defined('WebSiteName') or define('WebSiteName', '/wchatplatform');
 
 defined('Config') or define('Config', ROOT_DIR.'/Config');
 

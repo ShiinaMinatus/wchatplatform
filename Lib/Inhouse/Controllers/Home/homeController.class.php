@@ -53,11 +53,11 @@ class homeController extends mainhomeController implements inhousehome {
                             'type' => 'click',
                             'key' => 'lianxifangshi'
                         ),
-                        array(
-                            'name' => urlencode("价目表"),
-                            'type' => 'click',
-                            'key' => 'jiamubiao'
-                        ),
+                        // array(
+                        //     'name' => urlencode("价目表"),
+                        //     'type' => 'click',
+                        //     'key' => 'jiamubiao'
+                        // ),
                         array(
                             'name' => urlencode("门店信息"),
                             'type' => 'click',
@@ -75,7 +75,7 @@ class homeController extends mainhomeController implements inhousehome {
 
 
 
-        $token = 'ocv2LyfFdR4frfCfudzVDYhMDHv0nK6Kzo25_AmbfLwWJe7TqjbBWXKtpyiLR1WFbb21__t6d_q6IZcVGwB3Bw';
+        $token = 'HBOFX4LOOLHY8golYiSflzoByEjXOEYJMH_YQjYTA6ob19d7GqE9gI5IPY3vLS8yEsiYwaLmS5bPALEz04DHEg';
 
 
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $token;
