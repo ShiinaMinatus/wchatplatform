@@ -27,7 +27,7 @@
         
         <a href='{$websiteUrl}?g={$model}&a=web&v=stylistInfo&open_id={$open_id}'>发型师记录</a>
         
-         <a href='{$websiteUrl}?g={$model}&a=web&v=storeInformation&open_id={$open_id}'>发型师记录</a>
+         <a href='{$websiteUrl}?g={$model}&a=web&v=storeInformation&open_id={$open_id}'>门店信息</a>
 
 	
 
