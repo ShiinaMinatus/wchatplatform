@@ -9,11 +9,24 @@ class website {
 
 
 
-        /**
-         * 初始化 加载配置文件
-         */
-        include_once 'defined.php';
+        $host = $_SERVER['HTTP_HOST'];
 
+
+        /**
+         * 判断 访问的网址  如为localhost的时 加载本地配置文件 其他加载服务器匹配页面
+         */
+        if($host != 'localhost'){
+
+         
+            include_once 'defined_server.php';
+
+        } else{
+
+
+         
+            include_once 'defined.php';
+
+        }
         /**
          * 引入扩展函数库
          */
