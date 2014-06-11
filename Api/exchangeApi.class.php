@@ -40,14 +40,18 @@ class mainexchangeApi {
             return $userInfoArray;
         }
     }
-    
-    
- 
 
-    public function getExchangeList($open_id) {
+    public function getExchangeList($open_id, $date) {
         $postDate["source"] = SOURCE;
         $postDate['open_id'] = $open_id;
-        $exchangeList = transferData(APIURL . "/exchange/get_exchange_list?source=" . SOURCE . "&open_id=" . $this->userOpenId, "get");
+        if ($date == 0) {
+            $postDate["start_point"] = 0;
+            $postDate["end_point"] = 300;
+        } else {
+            $postDate["start_point"] = $date["start_point"];
+            $postDate["end_point"] = $date["end_point"];
+        }
+        $exchangeList = transferData(APIURL . "/exchange/get_exchange_list", "post", $postDate);
         $exchangeList = json_decode($exchangeList, true);
         $error = new errorApi();
         $error->JudgeError($exchangeList);

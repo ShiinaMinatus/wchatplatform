@@ -32,7 +32,7 @@ class exchangeController extends mainexchangeController implements jiantangexcha
     //兑换列表
     public function getExchangeList() {
 
-
+        var_dump("a");
         $this->able_register();
         $postDate["source"] = SOURCE;
         $postDate['open_id'] = $this->userOpenId;
@@ -51,7 +51,7 @@ class exchangeController extends mainexchangeController implements jiantangexcha
             $postDate["start_point"] = 0;
             $postDate["end_point"] = 300;
         }
-        $exchangeList = P('exchange')->getExchangeList($this->userOpenId);
+        $exchangeList = P('exchange')->getExchangeList($this->userOpenId,$postDate);
         $userInfo = P('user')->getUserInfo($this->userOpenId);
         $weixinUserInfo = $userInfo['weixin_user'];
         $localUserInfo = $userInfo['user'];
