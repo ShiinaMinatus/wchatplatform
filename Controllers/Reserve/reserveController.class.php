@@ -130,6 +130,8 @@ class mainreserveController extends BaseController implements mainreserve {
             $orderString = $orderItem["order"];
             if (time() >= $orderString['appointment_time']) {
                 $returnVal['orderState'] = "1";
+            }else if(time()-$orderString['appointment_time']<28800){
+                $returnVal['orderState'] = "2";
             }
             $returnVal["porpleCountSubmit"] = $orderString['order_number'];
             $orderDate = date("Y-m-d ", $orderString['appointment_time']);
