@@ -37,13 +37,13 @@ $("#orderMerchandise").change(function(){
 $("#orderDate").datetimepicker({
     format: "yyyy-mm-dd ",
     startDate:new Date(),
-    minuteStep:15,
+    minuteStep:30,
     autoclose:true,
     minView:0,
     forceParse:false,
     language:"zh-CN",
     beginHour:"9",
-    endHour:"22"
+    endHour:"20"
 });
 //$("#orderTime").datetimepicker({
 //format: "hh:ii",
