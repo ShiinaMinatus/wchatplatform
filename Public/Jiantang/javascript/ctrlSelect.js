@@ -61,3 +61,17 @@ function getDateTimeMessage(startTime,useDays,timeFormat){
             break;
     }
 }
+function UnixTimeToHoursAndMin(UnixTime){
+    var nowTime="";
+    var changeDateTime=new Date(UnixTime);
+    var endHours=changeDateTime.getHours();
+    var endMin=changeDateTime.getMinutes();
+    if(endHours<=9){
+        endHours="0"+endHours;
+    }
+    if(endMin<=9){
+        endMin="0"+endMin;
+    }
+     nowTime=endHours+":"+endMin;
+     return nowTime
+}

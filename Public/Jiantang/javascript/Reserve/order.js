@@ -60,23 +60,39 @@ $("#orderDate").datetimepicker().on('changeDate',function(ev){
     var changeTime=(ev.date.valueOf());
 
     changeTime=changeTime-(28800*1000);
+    var nowTime=UnixTimeToHoursAndMin(changeTime);
+    $.post(locationCheckTime,
+    {
+        order_time: changeTime
+    },
+    function(rData) {
+        var  dateIsScuess= rData['res'];
+        if(dateIsScuess=="0"){
+            //            var changeDateTime=new Date(changeTime);
+            //            var endHours=changeDateTime.getHours();
+            //            var endMin=changeDateTime.getMinutes();
+            //            if(endHours<=9){
+            //                endHours="0"+endHours;
+            //            }
+            //            if(endMin<=9){
+            //                endMin="0"+endMin;
+            //            }
+            //            var nowTime=endHours+":"+endMin;
+               
+            $("#orderTimeInput").val(nowTime);
 
-    var changeDateTime=new Date(changeTime);
-    var endHours=changeDateTime.getHours();
-    var endMin=changeDateTime.getMinutes();
-    if(endHours<=9){
-        endHours="0"+endHours;
-    }
-    if(endMin<=9){
-        endMin="0"+endMin;
-    }
-    var nowTime=endHours+":"+endMin;
-    $("#orderTimeInput").val(nowTime);
+            var weekNumber=changeDateTime.getDay();
+            var weekDays=["周日","周一","周二","周三","周四","周五","周六"];
+            var dayData=$("#orderDate").val();
+            $("#orderDateWithNoWeek").val(dayData);
+            $("#orderDate").val(dayData+""+weekDays[weekNumber]);
+            $("#submitOrder").prop("disabled", false);
+        }
+        else if(dateIsScuess=="1"){
+            alert("当前时间 "+nowTime+"预约已满请选择其他时间！");
+            $("#submitOrder").prop("disabled", true);
+        }
+    });
 
-    var weekNumber=changeDateTime.getDay();
-    var weekDays=["周日","周一","周二","周三","周四","周五","周六"];
-    var dayData=$("#orderDate").val();
-    $("#orderDateWithNoWeek").val(dayData);
-    $("#orderDate").val(dayData+""+weekDays[weekNumber]);
 //alert($("#orderDate").val())
 });

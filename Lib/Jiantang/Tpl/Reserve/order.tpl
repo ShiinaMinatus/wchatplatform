@@ -137,7 +137,7 @@
             <input id="porpleCount" value="1" type="hidden" >
         {/if}
     </body> 
-
+    <script src="{$WebSiteUrlPublic}/javascript/defined.js"></script>
     <script src="{$WebSiteUrlPublic}/javascript/ctrlSelect.js"></script>
     <script src="{$WebSiteUrlPublic}/javascript/bootstrap-datetimepicker.js"></script>
     <script src="{$WebSiteUrlPublic}/javascript/bootstrap-datetimepicker.zh-CN.js"  charset="UTF-8"></script>
