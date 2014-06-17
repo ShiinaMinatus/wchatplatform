@@ -58,12 +58,12 @@ $("#orderDate").datetimepicker({
 
 $("#orderDate").datetimepicker().on('changeDate',function(ev){
     var changeTime=(ev.date.valueOf());
-
+    var updateTime=changeTime;
     changeTime=changeTime-(28800*1000);
     var nowTime=UnixTimeToHoursAndMin(changeTime);
     $.post(locationCheckTime,
     {
-        order_time: changeTime
+        order_time: updateTime
     },
     function(rData) {
         var  dateIsScuess= rData['res'];

@@ -43,6 +43,7 @@
             }
         </style>
     </head>
+    {$returnVal.orderState}
     <body style='background-color: rgb(243,237,227);'>
         <form method='post' role="form" action="{$WebSiteUrl}?g={$model}&a=reserve&v=order&checkReturn=1&open_id={$open_id}">
             <div class="cardBackground"  style='background-color: #fff;position: relative;'>
@@ -50,9 +51,9 @@
                     {if $returnVal.orderState=="1"}
                         <p type="button" disabled="" style="opacity: 1;"><h3>过&nbsp;&nbsp;&nbsp;期</h3></p>
                     {else if $returnVal.orderState=="2"}
-                    <button type="submit" style="width: 60px;margin-top: 8px;" disabled="disabled" class="btn btn-primary">编&nbsp;&nbsp;&nbsp;辑</button>
+                    <button type="submit" style="width: 60px;margin-top: 8px;"  class="btn btn-primary">编&nbsp;&nbsp;&nbsp;辑</button>
                         {else}
-                    <button type="submit" style="width: 60px;margin-top: 8px; " class="btn btn-primary">编&nbsp;&nbsp;&nbsp;辑</button>
+                    <button type="submit" style="width: 60px;margin-top: 8px; "disabled="disabled" class="btn btn-primary">编&nbsp;&nbsp;&nbsp;辑</button>
                     {/if}
 
                 </div>
