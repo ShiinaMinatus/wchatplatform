@@ -32,7 +32,7 @@ class exchangeController extends mainexchangeController implements jiantangexcha
     //兑换列表
     public function getExchangeList() {
 
-        var_dump("a");
+      
         $this->able_register();
         $postDate["source"] = SOURCE;
         $postDate['open_id'] = $this->userOpenId;
