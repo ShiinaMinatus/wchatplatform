@@ -84,8 +84,11 @@ class mainreserveController extends BaseController implements mainreserve {
 
             $returnVal['merchandiseIteams'] = $merchandise['merchandise']['merchandise_name'];
             $returnVal['needMoney'] = $merchandise['merchandise']['merchandise_money'];
-            //
+            //用空格将时间拼装起来
             $postTime = strtotime($returnVal["orderDateInput"] . " " . $returnVal["orderTimeInput"]);
+            if (time() - $postTime < 28800) {
+                $returnVal['orderState'] = "2";
+            }
             $postDate["source"] = SOURCE;
             $postDate["open_id"] = $this->userOpenId;
             $postDate["merchandise_id"] = $returnVal['orderMerchandise'];
@@ -130,7 +133,7 @@ class mainreserveController extends BaseController implements mainreserve {
             $orderString = $orderItem["order"];
             if (time() >= $orderString['appointment_time']) {
                 $returnVal['orderState'] = "1";
-            }else if(time()-$orderString['appointment_time']<28800){
+            } else if (time() - $orderString['appointment_time'] < 28800) {
                 $returnVal['orderState'] = "2";
             }
             $returnVal["porpleCountSubmit"] = $orderString['order_number'];

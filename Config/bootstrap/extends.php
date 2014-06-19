@@ -343,6 +343,8 @@ function U($pathinfo, $var = '', $model = 0) {
     }
     if ($model == 0) {
 
+       
+
         echo '<script>window.location.href="' . $jumpUrl . '"</script>';
 
         die;
