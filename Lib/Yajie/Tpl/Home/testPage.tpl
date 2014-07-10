@@ -132,13 +132,13 @@
         <div id="slides_div"  style="background-color: white; width: 100%;height: 126px; position: relative;">
             <ul id="slides" style="z-index: 99; margin: 0; padding: 0;">
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
-                    <image src="{$WebSiteUrlPublic}/image/newPic/picketOne.png" style="width: 100%; height: 100%;" />
+                    <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketOne.png" style="width: 100%; height: 100%;" /></a>
                 </li>
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
-                    <image src="{$WebSiteUrlPublic}/image/newPic/picketTwo.png" style="width: 100%; height: 100%;" />
+                    <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketTwo.png" style="width: 100%; height: 100%;" /></a>
                 </li>
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
-                    <image src="{$WebSiteUrlPublic}/image/newPic/picketThree.png" style="width: 100%; height: 100%;" />
+                    <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketThree.png" style="width: 100%; height: 100%;" /></a>
                 </li>
             </ul>
         </div>
