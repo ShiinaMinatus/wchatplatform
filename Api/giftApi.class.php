@@ -39,7 +39,9 @@ class maingiftApi {
         $data['gift_type'] = $type;
         $data['open_id'] = $open_id;
         $data['source'] = SOURCE;
-
+        
+        
+      
         $giftInfoJson = transferData(APIURL . "/gift/get_user_gift_record", "post", $data);
         $giftInfoArray = json_decode($giftInfoJson, true);
 

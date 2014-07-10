@@ -42,10 +42,10 @@ class maingameController extends BaseController implements maingame {
 
         $this->able_register();
 
-        $giftApi = new giftApi();
+        //$giftApi = new giftApi();
         $info = P('gift')->getUserGameRecord($this->userOpenId, 1);
 
-       
+ 
         $this->display('bigWheelPage');
     }
 

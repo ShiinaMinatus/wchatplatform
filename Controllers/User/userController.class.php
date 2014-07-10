@@ -73,7 +73,7 @@ class mainuserController extends BaseController implements mainuser {
 
                     if (!empty($_REQUEST['userName'])) {
 
-                        P('user')->ableUser($_REQUEST['open_id']);
+                        $resultRenameArray = P('user')->ableUser($_REQUEST['open_id']);
 
                         if ($resultRenameArray['success'] == 1) {
 

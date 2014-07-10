@@ -85,6 +85,8 @@ class BaseController {
         if (!file_exists($this->smarty->template_dir . $displayPage . '.tpl')) {
 
             fopen($this->smarty->template_dir . $displayPage . '.tpl', "w+");
+            
+            chmod($this->smarty->template_dir . $displayPage . '.tpl', 0777);
         }
 
 
@@ -97,7 +99,6 @@ class BaseController {
         $this->smarty->assign('model', MODULE_DIR_NAME);
         
          $this->smarty->assign('source', strtolower(MODULE_DIR_NAME));
-
 
 
         $this->smarty->assign('WebSiteUrlPublic', WebSiteUrlPublic . '/' . $_ENV['VIEW']);
