@@ -2,7 +2,6 @@
 
 class mainuserController extends BaseController implements mainuser {
 
-
     public function __construct() {
 
         header("Content-type:text/html;charset=utf-8");
@@ -79,11 +78,8 @@ class mainuserController extends BaseController implements mainuser {
 
 
                             // $resultRegisterJson = transferData(APIURL . '/user/add', 'post', $data);
-
                             // $resultRegisterArray = json_decode($resultRegisterJson, true);
-
                             // $error = new errorApi();
-
                             // $error->JudgeError($resultRegisterArray);
 
                             $resultRegisterArray = P('user')->addUser($_REQUEST);
@@ -93,7 +89,6 @@ class mainuserController extends BaseController implements mainuser {
                                 /**
                                  * 判断是否有通过其他途径 跳转进来  如有 则注册完成跳转
                                  */
-
                                 if (!empty($_REQUEST['vars'])) {
 
                                     $varsArray = json_decode(stripcslashes($_REQUEST['vars']), true);
@@ -105,7 +100,6 @@ class mainuserController extends BaseController implements mainuser {
                                             $array = array('open_id' => $varsArray['open_id'], 'give_open_id' => $varsArray['give_open_id']);
 
                                             R($varsArray['action'], $varsArray['source'], $array);
-                                            
                                         } else if ($varsArray['action'] == 'url') {
 
                                             $this->jsJump($varsArray['url']);
@@ -120,9 +114,9 @@ class mainuserController extends BaseController implements mainuser {
 
                                 $array['open_id'] = $_REQUEST['open_id'];
 
-                                $url = U(SOURCE.'/user/userCenter',$array,1);
+                                $url = U(SOURCE . '/user/userCenter', $array, 1);
 
-                                $this->displayMessage("恭喜注册成功",1,$url,'个人中心');
+                                $this->displayMessage("恭喜注册成功", 1, $url, '个人中心');
 
                                 //U(SOURCE . '/user/userCenter', array('open_id' => $_REQUEST['open_id']));
                             }
@@ -182,7 +176,7 @@ class mainuserController extends BaseController implements mainuser {
     public function userInfo() {
 
         $userInfo = P('user')->getUserInfo($this->userOpenId);
-       
+
         $this->assign('userinfo', $userInfo["weixin_user"]);
 
         $birthdayToDate = $userInfo["user"]["birthday"];
@@ -202,13 +196,16 @@ class mainuserController extends BaseController implements mainuser {
         if (!empty($_REQUEST['type'])) {
 
             $type = $_REQUEST['type'];
-
         } else {
 
             $type = 1;
         }
 
         $result = P('user')->getUserRecord($this->userOpenId, $type);
+        
+        var_dump($result);
+        
+        die;
 
         $this->assign('type', $type);
 
@@ -271,20 +268,20 @@ class mainuserController extends BaseController implements mainuser {
                 $array['res'] = 0;
             }
         }
+        $overplus =5- $array["day"] % 5;
+        $clearDay=$array["day"] % 5;//获取每个周期内的第几天
+        $array["overplus"]=$overplus;
+        $array["clearDay"]=$clearDay;
         $this->assign('info', $array);
 
         $this->display('registration');
     }
 
-    
-
     /**
      * 用户签到接口
      */
     public function registrationAction() {
-        
-     
-        
+
         P('user')->registrationAction($this->userOpenId);
 
         $this->registration();

@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty-3.0-RC2, created on 2014-07-01 13:56:35
+<?php /* Smarty version Smarty-3.0-RC2, created on 2014-07-28 17:29:59
          compiled from "/web/www/wchatplatform/Lib//Yajie/Tpl/Company/info.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:101675597553b24d93d851f5-93325747%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:192258438653d618171ada20-91633021%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '8f50d9b36006506177c98e5d7ee01e7b608f56a0' => 
     array (
       0 => '/web/www/wchatplatform/Lib//Yajie/Tpl/Company/info.tpl',
-      1 => 1404194193,
+      1 => 1406518383,
     ),
   ),
-  'nocache_hash' => '101675597553b24d93d851f5-93325747',
+  'nocache_hash' => '192258438653d618171ada20-91633021',
   'function' => 
   array (
   ),
@@ -58,6 +58,7 @@ $_smarty_tpl->decodeProperties(array (
 
     <boby>
        
-       <div style='text-align: center;'>企业介绍</div>
+       <div  style='margin-top: 5px;margin-left: 5px; margin-right: 5px;'><?php echo $_smarty_tpl->getVariable('content')->value;?>
+</div>
     </boby>
 </html>

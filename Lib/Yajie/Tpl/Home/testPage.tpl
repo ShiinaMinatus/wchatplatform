@@ -161,11 +161,11 @@
                 </a>
 
 
-                <a class="iconItem" href='tel:13524446830'>
+                <a class="iconItem" href='tel:+8602131263800'>
                     <div class="iconPic">
                         <image src="{$WebSiteUrlPublic}/image/newPic/boHao.png"/>
                     </div>
-                    <div class="iconText">一键拨号</div>
+                    <div class="iconText">联系客服</div>
                 </a>
 
 
@@ -211,13 +211,16 @@
                     </div>
                     <div class="iconText">会员卡</div>
                 </a>
-
-                <div class="iconItem  ">
+                    
+                    
+                <a class="iconItem"  href='{$websiteUrl}/Public/Yajie/vtour/tour.html'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/noPic.png" style="width: 58px;height: 58px;"/>
+                        <image src="{$WebSiteUrlPublic}/image/newPic/quanJing.png"/>
                     </div>
-                    <div class="iconText iconTextNone">企业介绍</div>
-                </div>
+                    <div class="iconText">全景</div>
+                </a>
+
+              
                 <div class="iconItem  ">
                     <div class="iconPic">
                         <image src="{$WebSiteUrlPublic}/image/newPic/noPic.png" style="width: 58px;height: 58px;"/>

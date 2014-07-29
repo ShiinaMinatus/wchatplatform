@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty-3.0-RC2, created on 2014-07-10 10:57:36
+<?php /* Smarty version Smarty-3.0-RC2, created on 2014-07-28 17:30:06
          compiled from "/web/www/wchatplatform/Lib//Yajie/Tpl/Home/testPage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:107547614653be0120224ff9-69189156%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:103281776753d6181e70f8d2-62530403%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'cbb5e046909ba4d46a0672f0a65aee147f610305' => 
     array (
       0 => '/web/www/wchatplatform/Lib//Yajie/Tpl/Home/testPage.tpl',
-      1 => 1404959153,
+      1 => 1406539765,
     ),
   ),
-  'nocache_hash' => '107547614653be0120224ff9-69189156',
+  'nocache_hash' => '103281776753d6181e70f8d2-62530403',
   'function' => 
   array (
   ),
@@ -192,12 +192,12 @@ $_smarty_tpl->decodeProperties(array (
                 </a>
 
 
-                <a class="iconItem" href='tel:13524446830'>
+                <a class="iconItem" href='tel:+8602131263800'>
                     <div class="iconPic">
                         <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/boHao.png"/>
                     </div>
-                    <div class="iconText">一键拨号</div>
+                    <div class="iconText">联系客服</div>
                 </a>
 
 
@@ -262,14 +262,18 @@ $_smarty_tpl->decodeProperties(array (
                     </div>
                     <div class="iconText">会员卡</div>
                 </a>
-
-                <div class="iconItem  ">
+                    
+                    
+                <a class="iconItem"  href='<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
+/Public/Yajie/vtour/tour.html'>
                     <div class="iconPic">
                         <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
-/image/newPic/noPic.png" style="width: 58px;height: 58px;"/>
+/image/newPic/quanJing.png"/>
                     </div>
-                    <div class="iconText iconTextNone">企业介绍</div>
-                </div>
+                    <div class="iconText">全景</div>
+                </a>
+
+              
                 <div class="iconItem  ">
                     <div class="iconPic">
                         <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
