@@ -90,8 +90,13 @@
                 text-align: left;
             }
             #yesterDay{
+<<<<<<< HEAD
                 margin-left: 2px;
                 font-size:10px;
+=======
+                margin-left: 18px;
+                font-size:12px;
+>>>>>>> 6fae071e697d8ce11f52b9a6939a7473a5485d99
                 color:#969696; 
             }
             #firstDay{
@@ -161,7 +166,11 @@
             <div style="height:3px;"></div>
             <div id="registrationMessage">
                 <div class="testLine test" style="width: 14px;"></div>
+<<<<<<< HEAD
                 {if $info.day gt 5  and $info.day % 5 == 1}
+=======
+                {if $info.day gt 5}
+>>>>>>> 6fae071e697d8ce11f52b9a6939a7473a5485d99
                     <div class="testBigCircle circle test regisTrationIsCheck"></div>
                 {else}
                     <div class="testBigCircle circle test "></div>
@@ -264,11 +273,15 @@
             </div>
             <div style="height:5px;"></div>
             <div style="text-align: left">
+<<<<<<< HEAD
                   {if $info.day gt 5 and $info.day % 5 == 1}
                     <span id="yesterDay">昨天已签</span>
                 {else}
                     <span id="yesterDay" style="color:white">昨天已签</span>  
                 {/if}
+=======
+                <span id="yesterDay">昨天</span>
+>>>>>>> 6fae071e697d8ce11f52b9a6939a7473a5485d99
                 {if $info.day eq 0}
                     <span id="firstDay" class="noset">今日未签</span>
                     <span id="secDay" class="displayIsDisable">第二天</span>

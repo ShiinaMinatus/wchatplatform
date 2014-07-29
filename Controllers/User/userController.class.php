@@ -282,6 +282,7 @@ class mainuserController extends BaseController implements mainuser {
      */
     public function registrationAction() {
 
+
         P('user')->registrationAction($this->userOpenId);
 
         $this->registration();
