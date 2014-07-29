@@ -202,6 +202,10 @@ class mainuserController extends BaseController implements mainuser {
         }
 
         $result = P('user')->getUserRecord($this->userOpenId, $type);
+        
+        var_dump($result);
+        
+        die;
 
         $this->assign('type', $type);
 
@@ -245,7 +249,7 @@ class mainuserController extends BaseController implements mainuser {
         $array = P('user')->userRegistration($this->userOpenId);
 
         $today_time = mktime(0, 0, 0);
-
+        
         if (!empty($array['error'])) {
 
             $error_code = $array['error']['error_status'];

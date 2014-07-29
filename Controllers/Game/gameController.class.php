@@ -89,6 +89,7 @@ class maingameController extends BaseController implements maingame {
         $all = $this->getQuesion();
         
         
+        
         P('error')->JudgeError($all);
 
         $this->assign('info', $all['question']);

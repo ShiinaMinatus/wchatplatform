@@ -40,9 +40,6 @@
 
     <boby>
        
-       <div style='text-align: center;'>企业介绍</div>
-       
-       
-       <div >{$content}</div>
+       <div  style='margin-top: 5px;margin-left: 5px; margin-right: 5px;'>{$content}</div>
     </boby>
 </html>

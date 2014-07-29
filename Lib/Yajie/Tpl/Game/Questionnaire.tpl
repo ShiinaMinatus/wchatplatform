@@ -22,6 +22,9 @@
         <script src="{$WebSiteUrlPublic}/javascript/jquery.form.js"></script>
         <script src="{$WebSiteUrlPublic}/javascript/customInput.jquery.js"></script>
 
+        <link href="{$WebSiteUrlPublic}/Css/flat/blue.css" rel="stylesheet">
+<script src="{$WebSiteUrlPublic}/javascript/icheck.js"></script>
+
         <title>问卷调查</title>
     </head>
     <style>
@@ -163,6 +166,15 @@
 </html>
 <script>
     $("input:radio").customInput();
+
+    $(function(){
+
+
+  //        $('input').iCheck({
+  //   checkboxClass: 'icheckbox_flat-blue',
+  //   radioClass: 'iradio_flat-blue'
+  // });
+    })
     //    var title = $('#title').val();
     //
     //    var titleArray = title.split(',');

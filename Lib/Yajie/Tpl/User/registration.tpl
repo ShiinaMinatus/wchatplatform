@@ -90,12 +90,12 @@
                 text-align: left;
             }
             #yesterDay{
-                margin-left: 18px;
-                font-size:12px;
+                margin-left: 9px;
+                font-size:10px;
                 color:#969696; 
             }
             #firstDay{
-                margin-left: 13px;
+                margin-left: 7px;
                 font-size:12px;
                 color:#353535; 
             }
@@ -161,7 +161,8 @@
             <div style="height:3px;"></div>
             <div id="registrationMessage">
                 <div class="testLine test" style="width: 14px;"></div>
-                {if $info.day gt 5 and $info.day%5 eq 0}
+
+                {if $info.day gt 5  and $info.day % 5 == 1}
                     <div class="testBigCircle circle test regisTrationIsCheck"></div>
                 {else}
                     <div class="testBigCircle circle test "></div>
@@ -264,11 +265,13 @@
             </div>
             <div style="height:5px;"></div>
             <div style="text-align: left">
-                {if $info.day gt 5}
-                    <span id="yesterDay">昨天</span>
+
+                  {if $info.day gt 5 and $info.day % 5 == 1}
+                    <span id="yesterDay">昨天已签</span>
                 {else}
-                    <span id="yesterDay" style="color:white">昨天</span>  
+                    <span id="yesterDay" style="color:white">昨天已签</span>  
                 {/if}
+
                 {if $info.day eq 0}
                     <span id="firstDay" class="noset">今日未签</span>
                     <span id="secDay" class="displayIsDisable">第二天</span>

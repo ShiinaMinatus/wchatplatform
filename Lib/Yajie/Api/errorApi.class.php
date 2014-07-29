@@ -37,6 +37,18 @@ class errorApi extends mainerrorApi {
                     die;
                     break;
 
+
+             case '90001':
+
+                    if (!empty($this->error_list[$info['error']['error_status']])) {
+
+                        $this->displayMessage($this->error_list[$info['error']['error_status']],1);
+
+                        die;
+                    }
+
+                    break;
+            
                 default:
 
                     if (!empty($this->error_list[$info['error']['error_status']])) {

@@ -7,7 +7,7 @@ class companyApi {
      
         $data['source'] = SOURCE;
 
-        $arrayJson = transferData(APIURL . "/company/info", "post", $data);
+        $arrayJson = transferData(APIURL . "/company/get_info", "post", $data);
 
         $array = json_decode($arrayJson, true);
 

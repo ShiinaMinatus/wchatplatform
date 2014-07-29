@@ -132,13 +132,13 @@
         <div id="slides_div"  style="background-color: white; width: 100%;height: 126px; position: relative;">
             <ul id="slides" style="z-index: 99; margin: 0; padding: 0;">
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
-                    <image src="{$WebSiteUrlPublic}/image/newPic/picketOne.png" style="width: 100%; height: 100%;" />
+                    <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketOne.png" style="width: 100%; height: 100%;" /></a>
                 </li>
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
-                    <image src="{$WebSiteUrlPublic}/image/newPic/picketTwo.png" style="width: 100%; height: 100%;" />
+                    <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketTwo.png" style="width: 100%; height: 100%;" /></a>
                 </li>
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
-                    <image src="{$WebSiteUrlPublic}/image/newPic/picketThree.png" style="width: 100%; height: 100%;" />
+                    <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketThree.png" style="width: 100%; height: 100%;" /></a>
                 </li>
             </ul>
         </div>
@@ -161,11 +161,11 @@
                 </a>
 
 
-                <a class="iconItem" href='tel:13524446830'>
+                <a class="iconItem" href='tel:+8602131263800'>
                     <div class="iconPic">
                         <image src="{$WebSiteUrlPublic}/image/newPic/boHao.png"/>
                     </div>
-                    <div class="iconText">一键拨号</div>
+                    <div class="iconText">联系客服</div>
                 </a>
 
 
@@ -211,13 +211,16 @@
                     </div>
                     <div class="iconText">会员卡</div>
                 </a>
-
-                <div class="iconItem  ">
+                    
+                    
+                <a class="iconItem"  href='{$websiteUrl}/Public/Yajie/vtour/tour.html'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/noPic.png" style="width: 58px;height: 58px;"/>
+                        <image src="{$WebSiteUrlPublic}/image/newPic/quanJing.png"/>
                     </div>
-                    <div class="iconText iconTextNone">企业介绍</div>
-                </div>
+                    <div class="iconText">全景</div>
+                </a>
+
+              
                 <div class="iconItem  ">
                     <div class="iconPic">
                         <image src="{$WebSiteUrlPublic}/image/newPic/noPic.png" style="width: 58px;height: 58px;"/>

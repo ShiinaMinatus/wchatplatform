@@ -13,5 +13,22 @@ class companyController extends maincompanycontroller {
        $this->display();
    }
 
+
+   public  function official(){
+
+
+   	 if(!empty($_REQUEST['id'])){
+
+
+   	 	$result = P('official')->info($_REQUEST['id']);
+
+   	  $this->assign('info',$result);
+       
+       $this->display();
+
+   	 }
+
+   }
+
 }
 ?>

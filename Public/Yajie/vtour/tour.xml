@@ -1,0 +1,77 @@
+﻿﻿
+<krpano version="1.17.4" title="Virtual Tour" onstart="startup();">
+    <include url="skin/vtourskin.xml" />
+
+    <!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
+    <skin_settings bingmaps="false"
+                       bingmaps_key=""
+                       bingmaps_zoombuttons="false"
+                       gyro="true"
+                       thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+                       thumbs_opened="false"
+                       thumbs_text="false"
+                       thumbs_dragging="true"
+                       thumbs_onhoverscrolling="false"
+                       thumbs_scrollbuttons="false"
+                       thumbs_scrollindicator="false"
+                       thumbs_loop="false"
+                       tooltips_thumbs="false"
+                       tooltips_hotspots="false"
+                       tooltips_mapspots="false"
+                       controlbar_offset="20"
+	               />
+
+    <!-- set optional skin logo url -->
+    <layer name="skin_logo" url="" scale="0.25" opened_onclick="openurl('...',_blank);" />
+
+
+    <action name="startup">
+        if(startscene === null, copy(startscene,scene[0].name));
+        loadscene(get(startscene), null, MERGE);
+    </action>
+
+	
+    <scene name="scene_QQ______20130724120857" title="QQ图片20130724120857" onstart="" thumburl="panos/QQ______20130724120857.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/QQ______20130724120857.tiles/preview.jpg" />
+
+        <image hfov="1.00" vfov="0.625000" voffset="0.00">
+            <cylinder url="panos/QQ______20130724120857.tiles/pano.jpg" />
+        </image>
+
+        <!-- place your scene hotspots here -->
+        <hotspot name="spot1" style="skin_hotspotstyle" ath="0.009" atv="0.120" linkedscene="scene_qta_sphere" />
+    </scene>
+
+    <scene name="scene_qta_sphere" title="qta_sphere" onstart="" thumburl="panos/qta_sphere.tiles/thumb.jpg" lat="" lng="" heading="">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/qta_sphere.tiles/preview.jpg" />
+
+        <image>
+            <cube url="panos/qta_sphere.tiles/pano_%s.jpg" />
+            <mobile>
+                <cube url="panos/qta_sphere.tiles/mobile_%s.jpg" />
+            </mobile>
+        </image>
+
+        <!-- place your scene hotspots here -->
+
+        <plugin name="gyro" devices="html5"
+                    url="%SWFPATH%/plugins/gyro.js" 
+                    keep="true"
+                    enabled="true"
+                    camroll="true"
+                    friction="0.5"
+                    velastic="0.2"
+                    vrelative="false"
+                    onavailable=""
+        />
+
+    </scene>
+
+
+</krpano>
