@@ -161,7 +161,7 @@
             <div style="height:3px;"></div>
             <div id="registrationMessage">
                 <div class="testLine test" style="width: 14px;"></div>
-                {if $info.day gt 5}
+                {if $info.day gt 5 and $info.day%5 eq 0}
                     <div class="testBigCircle circle test regisTrationIsCheck"></div>
                 {else}
                     <div class="testBigCircle circle test "></div>
@@ -264,7 +264,11 @@
             </div>
             <div style="height:5px;"></div>
             <div style="text-align: left">
-                <span id="yesterDay">昨天</span>
+                {if $info.day gt 5}
+                    <span id="yesterDay">昨天</span>
+                {else}
+                    <span id="yesterDay" style="color:white">昨天</span>  
+                {/if}
                 {if $info.day eq 0}
                     <span id="firstDay" class="noset">今日未签</span>
                     <span id="secDay" class="displayIsDisable">第二天</span>
