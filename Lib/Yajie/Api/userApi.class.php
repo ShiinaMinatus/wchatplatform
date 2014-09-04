@@ -3,7 +3,7 @@
 class userApi extends mainuserApi {
 
     /**
-     * 博卡系统  绑定手机 关联
+     *  绑定手机 关联
      */
     public function bind($phone, $open_id) {
 
@@ -26,17 +26,15 @@ class userApi extends mainuserApi {
     }
 
     /**
-     * 获取用户消费记录
+     * 申请 绑定
      */
-    public function getCardInfo($open_id, $type) {
+    public function add($open_id) {
 
         $data['source'] = SOURCE;
 
-        $data['type'] = $type;
-
         $data['open_id'] = $open_id;
 
-        $userJsonData = transferData(APIURL . "/user/getUserCardInfo/", "post", $data);
+        $userJsonData = transferData(APIURL . "/user/userCard/", "post", $data);
 
         $array = json_decode($userJsonData, true);
 

@@ -6,7 +6,19 @@ class homeController extends mainhomeController {
 
         header("Content-type:text/html;charset=utf-8");
 
-        $this->assign("open_id","oIUY-tzD2rRdkycAc5ceQjtI1-ok");
+
+        if (!empty($_REQUEST['open_id'])) {
+
+            $this->userOpenId = $_REQUEST['open_id'];
+
+        }  else{
+
+            $this->userOpenId = 'oIUY-tzD2rRdkycAc5ceQjtI1-ok';
+        }
+        
+    
+        $this->assign('open_id', $this->userOpenId);
+
     }
 
     private $bigArray = array(

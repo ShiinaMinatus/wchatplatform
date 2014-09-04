@@ -125,15 +125,29 @@
                 font-size: 14px;
                 text-align: center;
             }
+            .iconPic img{
+
+                width: 58px;
+
+                height: 58px;
+
+
+            }
         </style>
     </head>
     <body style="background-color: #f1f1f1">
         <!--        <div id="titleTop">Mr.D</div>-->
-        <div id="slides_div"  style="background-color: white; width: 100%;height: 126px; position: relative;">
+        <div id="slides_div"  style="background-color: white; width: 320px;height: 128px; position: relative; margin: 0 auto;">
             <ul id="slides" style="z-index: 99; margin: 0; padding: 0;">
-                <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
+               
+                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
+                    <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/logo1.png" style="width: 100%; height: 100%;" /></a>
+                </li>
+
+                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
                     <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketOne.png" style="width: 100%; height: 100%;" /></a>
                 </li>
+
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
                     <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketTwo.png" style="width: 100%; height: 100%;" /></a>
                 </li>
@@ -141,21 +155,24 @@
                     <a href="{$websiteUrl}?g={$model}&a=company&v=info"><image src="{$WebSiteUrlPublic}/image/newPic/picketThree.png" style="width: 100%; height: 100%;" /></a>
                 </li>
             </ul>
-        </div>
-        <div id="logoGroup">
+       </div>
+        <!-- <div id="logoGroup">
             <div id="logo">
                 <image src="{$WebSiteUrlPublic}/image/newPic/logo.png"/>
             </div>
             <div id="logoText">
                 MR.D
             </div>
-        </div>
+        </div>  -->
+
+
+        <div style='width: 100%; height: 20px;'>&nbsp;</div>
         <div id="iconGroup">
             <div class="iconLine">
 
                 <a class="iconItem" href='{$websiteUrl}?g={$model}&a=company&v=info'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/qiYeJieShao.png"/>
+                        <image name="qiYeJieShao" src="{$WebSiteUrlPublic}/image/newPic/qiYeJieShao.png"/>
                     </div>
                     <div class="iconText">企业介绍</div>
                 </a>
@@ -163,7 +180,7 @@
 
                 <a class="iconItem" href='tel:+8602131263800'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/boHao.png"/>
+                        <image  name="boHao" src="{$WebSiteUrlPublic}/image/newPic/boHao.png"/>
                     </div>
                     <div class="iconText">联系客服</div>
                 </a>
@@ -171,7 +188,7 @@
 
                 <a class="iconItem"  href='{$websiteUrl}?g={$model}&a=game&v=activity&open_id={$open_id}'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/huoDong.png"/>
+                        <image  name="huoDong" src="{$WebSiteUrlPublic}/image/newPic/huoDong.png"/>
                     </div>
                     <div class="iconText">微活动</div>
                 </a>
@@ -181,7 +198,7 @@
 
                 <a class="iconItem" href='{$websiteUrl}?g={$model}&a=game&v=gameDa&open_id={$open_id}'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/zhuanPan.png"/>
+                        <image  name="zhuanPan"  style='width: 58px; height: 58px;' src="{$WebSiteUrlPublic}/image/newPic/zhuanPan.png"/>
                     </div>
                     <div class="iconText">微转盘</div>
                 </a>
@@ -189,7 +206,7 @@
 
                 <a class="iconItem"  href='{$websiteUrl}?g={$model}&a=game&v=Questionnaire&open_id={$open_id}'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/wenJuan.png"/>
+                        <image  name="wenJuan"  style='width: 58px; height: 58px;' src="{$WebSiteUrlPublic}/image/newPic/wenJuan.png"/>
                     </div>
                     <div class="iconText">微问卷</div>
                 </a>
@@ -197,7 +214,7 @@
 
                 <a class="iconItem"  href='{$websiteUrl}?g={$model}&a=user&v=registration&open_id={$open_id}'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/qianDao.png"/>
+                        <image name="qianDao" style='width: 58px; height: 58px;' src="{$WebSiteUrlPublic}/image/newPic/qianDao.png"/>
                     </div>
                     <div class="iconText">微签到</div>
                 </a>
@@ -205,9 +222,9 @@
             </div>
             <div class="iconLine  ">
 
-                <a class="iconItem"  href='{$websiteUrl}?g={$model}&a=user&v=userInfo'>
+                <a class="iconItem"  href='{$websiteUrl}?g={$model}&a=user&v=userInfo&open_id={$open_id}'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/huiYuan.png"/>
+                        <image name="huiYuan" style='width: 58px; height: 58px;' src="{$WebSiteUrlPublic}/image/newPic/huiYuan.png"/>
                     </div>
                     <div class="iconText">会员卡</div>
                 </a>
@@ -215,56 +232,56 @@
                     
                 <a class="iconItem"  href='{$websiteUrl}/Public/Yajie/vtour/tour.html'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/quanJing.png"/>
+                        <image name="quanJing" src="{$WebSiteUrlPublic}/image/newPic/quanJing.png"/>
                     </div>
                     <div class="iconText">全景</div>
                 </a>
 
-              
-                <div class="iconItem  ">
+
+                 <a class="iconItem"  href='http://open.pipikou.com/ordergoods/phone/index.htm?typeid=64546fe231f14dc187ea70f18910e5ab&cusid=a86618935c1d2cd1cf8bae39ff674d6e&fromId=&logID=98fd7b2aa6a4478e811fe5594b79f179'>
                     <div class="iconPic">
-                        <image src="{$WebSiteUrlPublic}/image/newPic/noPic.png" style="width: 58px;height: 58px;"/>
+                        <image name="shop" src="{$WebSiteUrlPublic}/image/newPic/shop.png"/>
                     </div>
-                    <div  class="iconText iconTextNone">企业介绍</div>
-                </div>
+                    <div class="iconText">微小店</div>
+                </a>
+
             </div>
         </div>
         <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
         <script src="{$WebSiteUrlPublic}/javascript/jquery.mobile-1.4.3.js" type="text/javascript"></script>
         <script src="{$WebSiteUrlPublic}/javascript/lanrenzhijia.js" type="text/javascript"></script>
-        <script src="{$WebSiteUrlPublic}/javascript/jQuery.autoIMG.js"></script>
+       
         <script>
-            $(".imgResize").css("width",$("body").width());
-            $(".imgResize").autoIMG();
-            $(window).resize(function(){
-            $(".imgResize").css("width",$("body").width());
-            $(".imgResize").autoIMG();
-        });
+        //     $(".imgResize").css("width",$("body").width());
+        //     $(".imgResize").autoIMG();
+        //     $(window).resize(function(){
+        //     $(".imgResize").css("width",$("body").width());
+        //     $(".imgResize").autoIMG();
+        // });
         var oldFileName="";
         var srcArray=new Array();
-            
-        $(".iconItem").mousedown(function(){
-        var image=$(this).find(".iconPic").find("img");
-        var src=image.attr("src");
-        srcArray=src.split("/");
-        var fileArray=new Array();
-        var file=srcArray[srcArray.length-1];
-        fileArray=file.split(".");
-        var fileName=fileArray[0];
-        var ext=fileArray[1];
-        oldFile=fileName+"."+ext;
-        var newFileName=fileName+"JiaoHu";
-        var newFile=newFileName+"."+ext;
-        srcArray[srcArray.length-1]=newFile;
-        var newSrc=srcArray.join("/");
-        image.attr("src",newSrc);
-    });
-    $(".iconItem").mouseup(function(){
-    var image=$(this).find(".iconPic").find("img");
-    srcArray[srcArray.length-1]=oldFile;
-    var oldSrc=srcArray.join("/");
-    image.attr("src",oldSrc);                             
+
+
+        $(document).ready(function(){
+
+    if (window.devicePixelRatio > 1) {
+        var lowresImages = $('img');
+ 
+        lowresImages.each(function(i) {
+
+
+            var lowres = $(this).attr('src');
+
+            var name = $(this).attr('name');
+
+            var newname = name +'@2x';
+            var highres = lowres.replace(name, newname);
+            $(this).attr('src', highres);
+        });
+    }
 });
+            
+        
         </script>
     </body>
 </html>

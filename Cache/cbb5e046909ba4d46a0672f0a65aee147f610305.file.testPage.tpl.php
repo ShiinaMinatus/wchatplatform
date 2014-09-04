@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty-3.0-RC2, created on 2014-07-28 17:30:06
+<?php /* Smarty version Smarty-3.0-RC2, created on 2014-07-30 11:56:29
          compiled from "/web/www/wchatplatform/Lib//Yajie/Tpl/Home/testPage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:103281776753d6181e70f8d2-62530403%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:183822147153d86cede58bc5-00398688%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'cbb5e046909ba4d46a0672f0a65aee147f610305' => 
     array (
       0 => '/web/www/wchatplatform/Lib//Yajie/Tpl/Home/testPage.tpl',
-      1 => 1406539765,
+      1 => 1406692589,
     ),
   ),
-  'nocache_hash' => '103281776753d6181e70f8d2-62530403',
+  'nocache_hash' => '183822147153d86cede58bc5-00398688',
   'function' => 
   array (
   ),
@@ -155,6 +155,13 @@ $_smarty_tpl->decodeProperties(array (
 &a=company&v=info"><image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/picketOne.png" style="width: 100%; height: 100%;" /></a>
                 </li>
+
+                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
+                    <a href="<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
+?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
+&a=company&v=info"><image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+/image/newPic/logo1.png" style="width: 100%; height: 100%;" /></a>
+                </li>
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
                     <a href="<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
 ?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
@@ -168,8 +175,8 @@ $_smarty_tpl->decodeProperties(array (
 /image/newPic/picketThree.png" style="width: 100%; height: 100%;" /></a>
                 </li>
             </ul>
-        </div>
-        <div id="logoGroup">
+       </div>
+        <!-- <div id="logoGroup">
             <div id="logo">
                 <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/logo.png"/>
@@ -177,7 +184,7 @@ $_smarty_tpl->decodeProperties(array (
             <div id="logoText">
                 MR.D
             </div>
-        </div>
+        </div>  -->
         <div id="iconGroup">
             <div class="iconLine">
 
@@ -273,14 +280,15 @@ $_smarty_tpl->decodeProperties(array (
                     <div class="iconText">全景</div>
                 </a>
 
-              
-                <div class="iconItem  ">
+
+                 <a class="iconItem"  href='http://open.pipikou.com/ordergoods/phone/index.htm?typeid=64546fe231f14dc187ea70f18910e5ab&cusid=a86618935c1d2cd1cf8bae39ff674d6e&fromId=&logID=98fd7b2aa6a4478e811fe5594b79f179'>
                     <div class="iconPic">
                         <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
-/image/newPic/noPic.png" style="width: 58px;height: 58px;"/>
+/image/newPic/shop.png"/>
                     </div>
-                    <div  class="iconText iconTextNone">企业介绍</div>
-                </div>
+                    <div class="iconText">微小店</div>
+                </a>
+
             </div>
         </div>
         <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>

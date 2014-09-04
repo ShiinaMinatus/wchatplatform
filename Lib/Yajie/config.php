@@ -17,6 +17,6 @@ $_ENV['VIEW'] = 'Yajie';
 define('TOKEN', 'Yajie.php');
 
 
-
+define('ABLEBINDING',1);
 
 ?>

@@ -40,7 +40,7 @@ class weixinEvent extends mainweixinEvent {
         $type = $wechat->getRev()->getRevType();
 
         $userCode = $wechat->getRev()->getRevFrom(); //获取微信号码 查询数据库 查看是否已经绑定帐号
-        $array[0] = array('Title' => '公司简介', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=home&v=testPageopen_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/yajie_weixin_crm/wchatplatform/Public/Yajie/MenuImage/company_info.png");
+        $array[0] = array('Title' => '公司简介', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=company&v=info&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/yajie_weixin_crm/wchatplatform/Public/Yajie/MenuImage/company_info.png");
         $wechat->news($array)->reply();
     }
 
@@ -109,14 +109,13 @@ class weixinEvent extends mainweixinEvent {
 
         $userCode = $wechat->getRev()->getRevFrom(); //获取微信号码 查询数据库 查看是否已经绑定帐号
         //$array[0] = array('Title' => '定制产品', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=company&v=official&id=3&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/yajie_weixin_crm/wchatplatform/Public/Yajie/MenuImage/CustomProducts.png");
-        
-        $text = '我们为您提供功能定制服务'.PHP_EOL.'满足您企业的个性需求'.PHP_EOL;
 
-        $text.='请点击<a href="http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=company&v=official&id=5&open_id=' . $userCode.'">联系我们</a>';
+        $text = '我们为您提供功能定制服务' . PHP_EOL . '满足您企业的个性需求' . PHP_EOL;
+
+        $text.='请点击<a href="http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=company&v=official&id=5&open_id=' . $userCode . '">联系我们</a>';
 
         $wechat->text($text)->reply();
     }
-
 
     function member() {
 
@@ -132,7 +131,6 @@ class weixinEvent extends mainweixinEvent {
         $wechat->news($array)->reply();
     }
 
-
     function OnlineCustomers() {
 
 
@@ -143,8 +141,31 @@ class weixinEvent extends mainweixinEvent {
         $type = $wechat->getRev()->getRevType();
 
         $userCode = $wechat->getRev()->getRevFrom(); //获取微信号码 查询数据库 查看是否已经绑定帐号
-        $array[0] = array('Title' => '在线客服', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=company&v=official&id=7&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/yajie_weixin_crm/wchatplatform/Public/Yajie/MenuImage/OnlineCustomers.jpg");
+        $array[0] = array('Title' => '在线客服', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=company&v=official&id=7&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/yajie_weixin_crm/wchatplatform/Public/Yajie/MenuImage/OnlineCustomers.png");
         $wechat->news($array)->reply();
+    }
+
+    function subscribe() {
+
+
+
+        $wechat = new Wechat();
+
+        $type = $wechat->getRev()->getRevType();
+
+        $userCode = $wechat->getRev()->getRevFrom(); //获取微信号码 查询数据库 查看是否已经绑定帐号
+
+
+        if (ABLEBINDING == 1) {
+
+
+            $array[0] = array('Title' => '成为会员', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=user&v=ativating&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/wchatplatform/public/company/image/2011071223051083.jpg");
+
+            $wechat->news($array)->reply();
+        } else {
+            
+             P('user')->add($userCode);
+        }
     }
 
 }
