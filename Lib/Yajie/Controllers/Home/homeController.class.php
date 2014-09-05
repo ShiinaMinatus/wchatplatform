@@ -10,25 +10,20 @@ class homeController extends mainhomeController {
         if (!empty($_REQUEST['open_id'])) {
 
             $this->userOpenId = $_REQUEST['open_id'];
-
-        }  else{
+        } else {
 
             $this->userOpenId = 'oIUY-tzD2rRdkycAc5ceQjtI1-ok';
         }
-        
-    
-        $this->assign('open_id', $this->userOpenId);
 
+
+        $this->assign('open_id', $this->userOpenId);
     }
 
     private $bigArray = array(
         'page' => array('type' => 'text', 'text' => '<a href="http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=Yajie&a=home&v=testPage&open_id={$open_id}">测试页面</a>'),
-
-        '帮助' => array('type'=>'php','name'=>'server'),
-
-        '联系方式'=>array('type'=>'text','text'=>'上海市闵行区沪闵路6088号 凯德龙之梦商务楼2102室,联系电话:+8602131263800'),
-
-        '会员卡查询'=>array('type'=>'php','name'=>'member'),
+        '帮助' => array('type' => 'php', 'name' => 'server'),
+        '联系方式' => array('type' => 'text', 'text' => '上海市闵行区沪闵路6088号 凯德龙之梦商务楼2102室,联系电话:+8602131263800'),
+        '会员卡查询' => array('type' => 'php', 'name' => 'member'),
     );
     private $companyInfo = array('companyInfo' => array('token' => 'yajie', ''), 'subscribe' => array(''));
 
@@ -131,9 +126,9 @@ class homeController extends mainhomeController {
     }
 
     public function index() {
-        
-        
-       
+
+
+
 
         $weChat = new Wechat();
 
@@ -141,6 +136,10 @@ class homeController extends mainhomeController {
     }
 
     public function testPage() {
+        
+        
+        
+     
 
         $this->display();
     }

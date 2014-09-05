@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty-3.0-RC2, created on 2014-07-30 11:56:29
+<?php /* Smarty version Smarty-3.0-RC2, created on 2014-09-04 16:38:08
          compiled from "/web/www/wchatplatform/Lib//Yajie/Tpl/Home/testPage.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:183822147153d86cede58bc5-00398688%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1167528504540824f0122dc1-53889063%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'cbb5e046909ba4d46a0672f0a65aee147f610305' => 
     array (
       0 => '/web/www/wchatplatform/Lib//Yajie/Tpl/Home/testPage.tpl',
-      1 => 1406692589,
+      1 => 1409814420,
     ),
   ),
-  'nocache_hash' => '183822147153d86cede58bc5-00398688',
+  'nocache_hash' => '1167528504540824f0122dc1-53889063',
   'function' => 
   array (
   ),
@@ -143,25 +143,35 @@ $_smarty_tpl->decodeProperties(array (
                 font-size: 14px;
                 text-align: center;
             }
+            .iconPic img{
+
+                width: 58px;
+
+                height: 58px;
+
+
+            }
         </style>
     </head>
     <body style="background-color: #f1f1f1">
         <!--        <div id="titleTop">Mr.D</div>-->
-        <div id="slides_div"  style="background-color: white; width: 100%;height: 126px; position: relative;">
+        <div id="slides_div"  style="background-color: white; width: 320px;height: 128px; position: relative; margin: 0 auto;">
             <ul id="slides" style="z-index: 99; margin: 0; padding: 0;">
-                <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
-                    <a href="<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
-?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
-&a=company&v=info"><image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
-/image/newPic/picketOne.png" style="width: 100%; height: 100%;" /></a>
-                </li>
-
+               
                  <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
                     <a href="<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
 ?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
 &a=company&v=info"><image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/logo1.png" style="width: 100%; height: 100%;" /></a>
                 </li>
+
+                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
+                    <a href="<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
+?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
+&a=company&v=info"><image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+/image/newPic/picketOne.png" style="width: 100%; height: 100%;" /></a>
+                </li>
+
                 <li class="imgResize" style=" cursor: pointer;  z-index: 900;background-position: 50% 0%; background-repeat: no-repeat;" onclick=''>
                     <a href="<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
 ?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
@@ -185,6 +195,9 @@ $_smarty_tpl->decodeProperties(array (
                 MR.D
             </div>
         </div>  -->
+
+
+        <div style='width: 100%; height: 20px;'>&nbsp;</div>
         <div id="iconGroup">
             <div class="iconLine">
 
@@ -192,7 +205,7 @@ $_smarty_tpl->decodeProperties(array (
 ?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
 &a=company&v=info'>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image name="qiYeJieShao" src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/qiYeJieShao.png"/>
                     </div>
                     <div class="iconText">企业介绍</div>
@@ -201,7 +214,7 @@ $_smarty_tpl->decodeProperties(array (
 
                 <a class="iconItem" href='tel:+8602131263800'>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image  name="boHao" src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/boHao.png"/>
                     </div>
                     <div class="iconText">联系客服</div>
@@ -213,7 +226,7 @@ $_smarty_tpl->decodeProperties(array (
 &a=game&v=activity&open_id=<?php echo $_smarty_tpl->getVariable('open_id')->value;?>
 '>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image  name="huoDong" src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/huoDong.png"/>
                     </div>
                     <div class="iconText">微活动</div>
@@ -227,7 +240,7 @@ $_smarty_tpl->decodeProperties(array (
 &a=game&v=gameDa&open_id=<?php echo $_smarty_tpl->getVariable('open_id')->value;?>
 '>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image  name="zhuanPan"  style='width: 58px; height: 58px;' src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/zhuanPan.png"/>
                     </div>
                     <div class="iconText">微转盘</div>
@@ -239,7 +252,7 @@ $_smarty_tpl->decodeProperties(array (
 &a=game&v=Questionnaire&open_id=<?php echo $_smarty_tpl->getVariable('open_id')->value;?>
 '>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image  name="wenJuan"  style='width: 58px; height: 58px;' src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/wenJuan.png"/>
                     </div>
                     <div class="iconText">微问卷</div>
@@ -251,7 +264,7 @@ $_smarty_tpl->decodeProperties(array (
 &a=user&v=registration&open_id=<?php echo $_smarty_tpl->getVariable('open_id')->value;?>
 '>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image name="qianDao" style='width: 58px; height: 58px;' src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/qianDao.png"/>
                     </div>
                     <div class="iconText">微签到</div>
@@ -262,9 +275,10 @@ $_smarty_tpl->decodeProperties(array (
 
                 <a class="iconItem"  href='<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
 ?g=<?php echo $_smarty_tpl->getVariable('model')->value;?>
-&a=user&v=userInfo'>
+&a=user&v=userInfo&open_id=<?php echo $_smarty_tpl->getVariable('open_id')->value;?>
+'>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image name="huiYuan" style='width: 58px; height: 58px;' src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/huiYuan.png"/>
                     </div>
                     <div class="iconText">会员卡</div>
@@ -274,7 +288,7 @@ $_smarty_tpl->decodeProperties(array (
                 <a class="iconItem"  href='<?php echo $_smarty_tpl->getVariable('websiteUrl')->value;?>
 /Public/Yajie/vtour/tour.html'>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image name="quanJing" src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/quanJing.png"/>
                     </div>
                     <div class="iconText">全景</div>
@@ -283,7 +297,7 @@ $_smarty_tpl->decodeProperties(array (
 
                  <a class="iconItem"  href='http://open.pipikou.com/ordergoods/phone/index.htm?typeid=64546fe231f14dc187ea70f18910e5ab&cusid=a86618935c1d2cd1cf8bae39ff674d6e&fromId=&logID=98fd7b2aa6a4478e811fe5594b79f179'>
                     <div class="iconPic">
-                        <image src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
+                        <image name="shop" src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /image/newPic/shop.png"/>
                     </div>
                     <div class="iconText">微小店</div>
@@ -296,40 +310,38 @@ $_smarty_tpl->decodeProperties(array (
 /javascript/jquery.mobile-1.4.3.js" type="text/javascript"></script>
         <script src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
 /javascript/lanrenzhijia.js" type="text/javascript"></script>
-        <script src="<?php echo $_smarty_tpl->getVariable('WebSiteUrlPublic')->value;?>
-/javascript/jQuery.autoIMG.js"></script>
+       
         <script>
-            $(".imgResize").css("width",$("body").width());
-            $(".imgResize").autoIMG();
-            $(window).resize(function(){
-            $(".imgResize").css("width",$("body").width());
-            $(".imgResize").autoIMG();
-        });
+        //     $(".imgResize").css("width",$("body").width());
+        //     $(".imgResize").autoIMG();
+        //     $(window).resize(function(){
+        //     $(".imgResize").css("width",$("body").width());
+        //     $(".imgResize").autoIMG();
+        // });
         var oldFileName="";
         var srcArray=new Array();
-            
-        $(".iconItem").mousedown(function(){
-        var image=$(this).find(".iconPic").find("img");
-        var src=image.attr("src");
-        srcArray=src.split("/");
-        var fileArray=new Array();
-        var file=srcArray[srcArray.length-1];
-        fileArray=file.split(".");
-        var fileName=fileArray[0];
-        var ext=fileArray[1];
-        oldFile=fileName+"."+ext;
-        var newFileName=fileName+"JiaoHu";
-        var newFile=newFileName+"."+ext;
-        srcArray[srcArray.length-1]=newFile;
-        var newSrc=srcArray.join("/");
-        image.attr("src",newSrc);
-    });
-    $(".iconItem").mouseup(function(){
-    var image=$(this).find(".iconPic").find("img");
-    srcArray[srcArray.length-1]=oldFile;
-    var oldSrc=srcArray.join("/");
-    image.attr("src",oldSrc);                             
+
+
+        $(document).ready(function(){
+
+    if (window.devicePixelRatio > 1) {
+        var lowresImages = $('img');
+ 
+        lowresImages.each(function(i) {
+
+
+            var lowres = $(this).attr('src');
+
+            var name = $(this).attr('name');
+
+            var newname = name +'@2x';
+            var highres = lowres.replace(name, newname);
+            $(this).attr('src', highres);
+        });
+    }
 });
+            
+        
         </script>
     </body>
 </html>

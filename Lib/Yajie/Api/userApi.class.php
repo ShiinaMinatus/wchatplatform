@@ -1,6 +1,10 @@
 <?php
 
 class userApi extends mainuserApi {
+    
+    
+    
+    
 
     /**
      *  绑定手机 关联
