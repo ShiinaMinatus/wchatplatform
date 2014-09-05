@@ -9,13 +9,13 @@ class userController extends mainuserController {
         if (!empty($_REQUEST['open_id'])) {
 
             $this->userOpenId = $_REQUEST['open_id'];
+        } else {
+            $this->userOpenId = 'oIUY-tzD2rRdkycAc5ceQjtI1-ok';
         }
-        
-        $this->userOpenId = 'oIUY-tzD2rRdkycAc5ceQjtI1-ok';
+
 
         $this->assign('open_id', $this->userOpenId);
     }
-
 
     /**
      * 绑定
@@ -56,8 +56,29 @@ class userController extends mainuserController {
         }
     }
 
+    public function userInfo() {
 
-    
+        $userinfo = p('user')->getUserInfo($this->userOpenId);
+        $userinfo = $userinfo["user"];
+        $userCode =  strtoupper($userinfo['user_code']) ;
+        
+        $userPoint = $userinfo['user_integration'];
+        $userMoney = $userinfo['user_money'];
+        $companyInfo = p('company')->get_info();
+        $wifiName = $companyInfo['wifiName'];
+        $wifiPassword = $companyInfo['wifiPassword'];
+        $this->assign('userCode', $userCode);
+        $this->assign('userPoint', $userPoint);
+        $this->assign('userMoney', $userMoney);
+        $this->assign('wifiName', $wifiName);
+        $this->assign('wifiPassword', $wifiPassword);
+//        var_dump($wifiPassword);
+        $this->assign('userinfo', $userInfo["weixin_user"]);
+
+
+
+        $this->display();
+    }
 
 }
 

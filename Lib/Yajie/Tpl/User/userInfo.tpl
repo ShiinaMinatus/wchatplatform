@@ -82,10 +82,10 @@
     </head>
     <body style="background-color: #9293bb">
         <div style="height: 55px;"></div>
-<!--        <div id="sawtooth_border"></div>-->
+        <!--        <div id="sawtooth_border"></div>-->
         <div id="mainDiv">
             <div id="cardList" style="">
-
+                <div style="position: absolute;bottom: 5px;right:30px;font-size: 12px;color: #505050">卡号 {$userCode}</div>
             </div>
 
             <div id="context">
@@ -97,14 +97,14 @@
                 <div id="money_message" class="listBorder">
                     <div class="listItem line_bottom">
                         <image src="{$WebSiteUrlPublic}/image/memberPic/yu_e.png" align="top" class="item_pic_position">
-                        <span class="">预存余额：0元</span>
+                        <span class="">预存余额：{$userMoney}元</span>
                         <div class="item_tag_position">
                             <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
                         </div>
                     </div>
                     <div class="listItem">
                         <image src="{$WebSiteUrlPublic}/image/memberPic/jiFen.png" align="top" class="item_pic_position">
-                        <span class="">积分：212分</span>
+                        <span class="">积分：{$userPoint}分</span>
                         <div class="item_tag_position">
                             <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
                         </div>
@@ -149,16 +149,28 @@
                 </div>
                 <div style="height: 20px;"></div>
                 <div id="another_message" class="listBorder">
-                    <div class="listItem line_bottom">
+                    <div class="listItem line_bottom" onclick='window.location.href = "{$websiteUrl}?g={$model}&a=user&v=userCardAndTel&open_id={$open_id}"'>
                         <span class="">报手机号就能用卡啦！</span>
                         <div class="item_tag_position" style="margin-top: 1px;">
                             <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
                         </div>
                     </div>
+                    <div class="listItem line_bottom">
+                        <span class="">wifi账号：{$wifiName}</span>
+                        <div class="item_tag_position" style="margin-top: 1px;">
+
+                        </div>
+                    </div>
+                    <div class="listItem line_bottom">
+                        <span class="">wifi密码：{$wifiPassword}</span>
+                        <div class="item_tag_position" style="margin-top: 1px;">
+
+                        </div>
+                    </div>
                     <div class="listItem ">
                         <span class="">wifi下点开，你将不敢想象这只是家串店</span>
                         <div class="item_tag_position" style="margin-top: 1px;">
-                            <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
+
                         </div>
                     </div>
                 </div>
@@ -170,13 +182,15 @@
                             <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
                         </div>
                     </div>
-                    <div class="listItem line_bottom">
+
+                    <div class="listItem line_bottom" onclick='window.location.href = "{$websiteUrl}?g={$model}&a=user&v=userCardStatement&open_id={$open_id}"'>
                         <span class="">会员卡说明</span>
                         <div class="item_tag_position" style="margin-top: 1px;">
                             <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
                         </div>
                     </div>
-                    <div class="listItem ">
+
+                    <div class="listItem " onclick='window.location.href = "{$websiteUrl}?g={$model}&a=company&v=storesAndAddress"'>
                         <span class="">适用门店以及地址</span>
                         <div class="item_tag_position" style="margin-top: 1px;">
                             <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
