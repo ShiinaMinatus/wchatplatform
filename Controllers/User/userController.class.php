@@ -202,10 +202,6 @@ class mainuserController extends BaseController implements mainuser {
         }
 
         $result = P('user')->getUserRecord($this->userOpenId, $type);
-        
-        var_dump($result);
-        
-        die;
 
         $this->assign('type', $type);
 
@@ -249,7 +245,7 @@ class mainuserController extends BaseController implements mainuser {
         $array = P('user')->userRegistration($this->userOpenId);
 
         $today_time = mktime(0, 0, 0);
-        
+
         if (!empty($array['error'])) {
 
             $error_code = $array['error']['error_status'];
@@ -268,10 +264,10 @@ class mainuserController extends BaseController implements mainuser {
                 $array['res'] = 0;
             }
         }
-        $overplus =5- $array["day"] % 5;
-        $clearDay=$array["day"] % 5;//获取每个周期内的第几天
-        $array["overplus"]=$overplus;
-        $array["clearDay"]=$clearDay;
+        $overplus = 5 - $array["day"] % 5;
+        $clearDay = $array["day"] % 5; //获取每个周期内的第几天
+        $array["overplus"] = $overplus;
+        $array["clearDay"] = $clearDay;
         $this->assign('info', $array);
 
         $this->display('registration');
@@ -286,6 +282,34 @@ class mainuserController extends BaseController implements mainuser {
         P('user')->registrationAction($this->userOpenId);
 
         $this->registration();
+    }
+
+    /**
+     * 会员卡说明
+     */
+    public function userCardStatement() {
+        $result = p('official')->info(8);
+        $cardStatement = $result['official_text'];
+
+        if ($cardStatement == "") {
+            $cardStatement = "<div style='text-align: center;'>暂无介绍</div>";
+        }
+        $this->assign('context', $cardStatement);
+        $this->display();
+    }
+
+    /**
+     * 报手机号就能用卡啦！
+     */
+    public function userCardAndTel() {
+        $result = p('official')->info(10);
+        $cardStatement = $result['official_text'];
+
+        if ($cardStatement == "") {
+            $cardStatement = "<div style='text-align: center;'>暂无介绍</div>";
+        }
+        $this->assign('context', $cardStatement);
+        $this->display();
     }
 
 }

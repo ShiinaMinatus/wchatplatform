@@ -10,9 +10,9 @@
  *
  * @author zhaixiaoping
  */
-interface maincompany{
-    //put your code here
-    
-    
-    
+interface maincompany {
+
+//put your code here
+
+    public function storesAndAddress();
 }
