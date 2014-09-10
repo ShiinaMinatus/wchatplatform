@@ -58,7 +58,7 @@
                 text-align: left;
                 padding-bottom: 9px;
                 padding-top: 5px;
-                margin: 0px 9px;
+
             }
             #footReturn{
                 z-index: 89;
@@ -113,7 +113,7 @@
                 </li>
                 <li >
                     <h2 id="shopTitle">使用说明</h2>
-                    <ul class="mainText" style="padding-right: 12px;">
+                    <ul class="mainText" style="padding-right: 12px;line-height: 25px;">
                         <li data-type="使用说明">雅捷微生活会员卡服务平台
                         </li><li data-type="使用说明">第一条：用户通过微信公众平台关注“雅捷”获取雅捷微生活会员卡。
                         </li><li data-type="使用说明">第二条：为保障您个人的会员卡安全，请妥善保管您的手机，微信账户。如您对本平台显示的信息有任何疑问，请及时联系客服热线进行咨询。 
