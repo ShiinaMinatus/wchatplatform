@@ -43,7 +43,7 @@
             }
             .mainText{
                 color: #797979;
-                font-size: 12px;}
+                font-size: 13px;}
             #titleList{
                 padding: 10px 0px 40px;
                 width: 310px;
