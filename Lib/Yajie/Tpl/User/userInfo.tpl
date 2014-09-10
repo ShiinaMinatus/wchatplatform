@@ -167,12 +167,12 @@
 
                         </div>
                     </div>
-                    <div class="listItem ">
+                 <!--    <div class="listItem " onclick='window.location.href="{$websiteUrl}/Public/Yajie/vtour/tour.html"'>
                         <span class="">wifi下点开，你将不敢想象这只是家串店</span>
                         <div class="item_tag_position" style="margin-top: 1px;">
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="height: 20px;"></div>
                 <div id="card_and_shop_message" class="listBorder">

@@ -161,7 +161,7 @@ class weixinEvent extends mainweixinEvent {
 
             P('user')->add($userCode);
             
-            $array[0] = array('Title' => '成为会员', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=user&v=ativating&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/wchatplatform/public/company/image/2011071223051083.jpg");
+            $array[0] = array('Title' => '绑定手机', 'Description' => '', 'Url' => 'http://112.124.25.155/yajie_weixin_crm/wchatplatform/?g=' . SOURCE . '&a=user&v=ativating&open_id=' . $userCode, 'PicUrl' => "http://112.124.25.155/wchatplatform/public/company/image/2011071223051083.jpg");
 
             $wechat->news($array)->reply();
         } else {

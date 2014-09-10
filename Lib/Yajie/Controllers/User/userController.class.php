@@ -22,7 +22,7 @@ class userController extends mainuserController {
      */
     public function ativating() {
 
-        $userInfo = P('user')->ableUser($this->userOpenId);
+        //$userInfo = P('user')->ableUser($this->userOpenId);
 
         if (!empty($userInfo['error']) && $userInfo['error']['error_status'] == 20002) {
 
