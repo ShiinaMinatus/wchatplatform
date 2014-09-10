@@ -190,7 +190,7 @@
                         </div>
                     </div>
 
-                    <div class="listItem " onclick='window.location.href = "{$websiteUrl}?g={$model}&a=company&v=storesAndAddress"'>
+                    <div class="listItem " onclick='window.location.href = "{$websiteUrl}?g={$model}&a=company&v=storesAndAddress&open_id={$open_id}#mp.weixin.qq.com"'>
                         <span class="">适用门店以及地址</span>
                         <div class="item_tag_position" style="margin-top: 1px;">
                             <image src="{$WebSiteUrlPublic}/image/memberPic/jianTou.png" >
